@@ -7,6 +7,7 @@
 - [6. API nộp riêng lẻ từng câu](#6-api-nộp-riêng-lẻ-từng-câu)
 - [7. API xem kết quả](#7-api-xem-kết-quả)
 - [8. API xem kết quả theo ngày](#8-api-xem-kết-quả-theo-ngày)
+- [9. API lưu report bài kiểm tra theo phiên](#9-api-lưu-report-bài-kiểm-tra-theo-phiên)
 
 # 0. Một số chú thích ban đầu
 > các type của câu hỏi :
@@ -51,7 +52,7 @@ curl -X 'POST' \
 
 > UseCase tương ứng 
 ```
-1
+UseCase 570
 ```
 
 > output
@@ -444,7 +445,7 @@ curl -X 'POST' \
 
 > UseCase tương ứng 
 ```
-1
+UseCase 571
 ```
 
 > input
@@ -524,7 +525,7 @@ curl --location --request PUT 'https://be.moooc.xyz/v2api/course/structure/exam/
 
 > UseCase tương ứng 
 ```
-1
+UseCase 571
 ```
 
 > response 
@@ -610,6 +611,9 @@ curl --location --request PUT 'https://be.moooc.xyz/v2api/course/structure/exam/
 
 # 4. API bắt đầu riêng lẻ các câu hỏi
 * API này chỉ sử dụng cho các câu hỏi cần phải đếm giờ (timeToCompleted khác null và khác 0)
+```
+UseCase 570.BS
+```
 > request
 
 ```json
@@ -647,7 +651,7 @@ curl -X 'POST' \
 
 > UseCase tương ứng 
 ```
-1
+UseCase 572
 ```
 
 > request
@@ -747,7 +751,7 @@ curl --location 'https://be.moooc.xyz/v2/api/course/structure/exam/submit' \
 * API này chỉ sử dụng cho các câu hỏi đếm giờ nhằm nộp đáp án lên khi hết giờ làm câu đó
 > UseCase tương ứng 
 ```
-1
+UseCase 570
 ```
 
 > request
@@ -795,6 +799,11 @@ curl -X 'POST' \
 ```
 
 # 7. API xem kết quả
+
+> UseCase tương ứng 
+```
+UseCase 573
+```
 
 > request
 ```json
@@ -877,6 +886,80 @@ curl -X 'GET' \
 ]
 ```
 
+# 8. API xem kết quả theo ngày
 
+> UseCase tương ứng 
+```
+UseCase 573 - 10
+```
 
+> request
 
+```json
+curl --location 'https://be.moooc.xyz/v2/api/course/structure/exam/submit-history-date/786' \
+--header 'accept: */*' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTgyMDI5MTYsImV4cCI6MTcxODI4OTMxNn0.E8ksRD0MhIWWvs50p34KsXeFJxXJwBI6fa6bZCFyQ5Q'
+```
+
+| Parameter   | Mandatory | datatype | Description |
+|-------------| --------- |----------|-------------|
+| quizId  | y         | long     | mã câu hỏi  |
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "date": "2024-06-06T09:21:34Z",
+      "sessionId": "f28d8cff-bc2a-4333-8907-4ca940edfcd7"
+    },
+    {
+      "date": "2024-06-13T08:33:53Z",
+      "sessionId": "b194d4db-5759-4f76-908c-9dcb2c98e3de"
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+* Note : API này trả ra list ngày và sessionId , để xem kết quả , call api số 7 để lấy kết quả theo sessionId
+
+# 9. API lưu report bài kiểm tra theo phiên
+
+> UseCase tương ứng 
+```
+UseCase 573 - 3
+```
+
+> request
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/course/structure/exam/report' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTgyMDI5MTYsImV4cCI6MTcxODI4OTMxNn0.E8ksRD0MhIWWvs50p34KsXeFJxXJwBI6fa6bZCFyQ5Q' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "blockId": 786,
+  "sessionId": "ab836460-83c7-4cfd-a8cf-d5067bbae99e",
+  "content": "dev chấm sai"
+}'
+```
+
+| Parameter   | Mandatory | datatype | Description |
+|-------------| --------- |----------|-------------|
+| blockId  | y         | long     | mã block  |
+| sessionId  | y         | string     | mã phiên làm bài  |
+| content  | y         | string     | nội dung report  |
+
+> response
+
+```json
+{
+  "success": true,
+  "data": null,
+  "message": "Thực hiện thành công"
+}
+```
