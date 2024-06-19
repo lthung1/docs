@@ -9,6 +9,7 @@
 - [8. API xem toàn bộ thảo luận của khóa học cho sinh viên](#8-api-xem-toàn-bộ-thảo-luận-của-khóa-học-cho-sinh-viên)
 - [9. API đếm số thảo luận của khóa học(Tất cả, Của tôi, Đã ghim)](#9-api-đếm-số-thảo-luận-của-khóa-học-tất-cả-của-tôi-đã-ghim)
 - [10. API đếm số thảo luận của học liệu(Tất cả, Của tôi, Đã ghim)](#10-api-đếm-số-thảo-luận-của-học-liệu-tất-cả-của-tôi-đã-ghim)
+- [11. Một số bổ sung cho api cũ](#11-một-số-bổ-sung-cho-api-cũ)
 
 
 # 0.Một số chú thích ban đầu
@@ -783,6 +784,7 @@ curl -X 'POST' \
 ```
 
 > input:
+
 | Parameter   | Mandatory | datatype | Description | Note |
 |-------------| --------- |----------|-------------|------|
 | page  | n         | int     | trang số  ||
@@ -793,7 +795,7 @@ curl -X 'POST' \
 | isPinned  | n         | boolean     |đã ghim ||
 | isMine  | n         | boolean     |của tôi ||
 
-> output
+> output:
 ```json
 {
   "success": true,
@@ -1298,8 +1300,13 @@ curl -X 'POST' \
 * reactionCount: chứa reactionType và count
 * totalReply: tổng số phản hổi
 * isMine: comment có phải của người đang đăng nhập không
+* isPinned: thảo luận có được ghim không
 
 # 9. API đếm số thảo luận của khóa học (Tất cả, của tôi, đã ghim)
+> note :
+
+* cần sửa lại, chưa dùng được, đổi tên đường dẫn thành get-count-by-course
+
 > use case tương ứng:
 ```
 BS 5.3
@@ -1307,16 +1314,18 @@ BS 5.3
 > request:
 ```json
 curl -X 'GET' \
-  'https://be.moooc.xyz/v2/api/unit-discussion/get-statistic-count-discussion/3' \
+  curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/unit-discussion/get-count-by-course/3?discussionType=2' \
   -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9hbmd2eEBnbWFpbC5jb20iLCJlbWFpbCI6ImhvYW5ndnhAZ21haWwuY29tIiwiaWQiOjg0LCJpc1N1cGVyVXNlciI6ZmFsc2UsInBvc2l0aW9uIjoiaXNfc3YiLCJyb2xlcyI6W10sImlhdCI6MTcxODYzODM4MywiZXhwIjoxNzE4NzI0NzgzfQ.gfxbbj3VEkfB7LKFTnBQW2A23sqN4c7jVPmwbLHZ1s4'
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbImdoYURTSEdKSEpTREEiXSwiaWF0IjoxNzE4Nzc5NTE4LCJleHAiOjE3MTg3ODMxMTh9.JY4CqmtOxbzpnst6IkTxfBSU_HztlMHSGJwVYCKoCYM'
 ```
 
 > input:
 
 | Parameter   | Mandatory | datatype | Description | Note |
 |-------------| --------- |----------|-------------|------|
-| id  | y         | int     | id khóa học|
+| id  | y         | int     | id khóa học|path|
+| discussionType  | y         | int     | id khóa học|param|
 
 > output :
 ```json
@@ -1334,11 +1343,57 @@ curl -X 'GET' \
 # 10. API đếm số thảo luận của học liệu (Tất cả, của tôi, đã ghim)
 > use case tương ứng:
 ```
-
+UC910
 ```
 > request
 ```json
-
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/unit-discussion/get-count-by-unit/2236?discussionType=2' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbImdoYURTSEdKSEpTREEiXSwiaWF0IjoxNzE4Nzc5NTE4LCJleHAiOjE3MTg3ODMxMTh9.JY4CqmtOxbzpnst6IkTxfBSU_HztlMHSGJwVYCKoCYM'
 ```
 
 > input:
+
+| Parameter   | Mandatory | datatype | Description | Note |
+|-------------| --------- |----------|-------------|------|
+| id  | y         | int     | id học liệu| path|
+| discussionType  | y         | int     | loại thảo luận| param|
+
+> output: 
+
+```json
+{
+  "success": true,
+  "data": {
+    "totalNumber": 8,
+    "pinnedNumber": 1,
+    "mineNumber": 2
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 11. Một số bổ sung cho api cũ
+
+> api đã được bổ sung thêm field:
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/mooc-course-unit/get-unit/2236' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbImdoYURTSEdKSEpTREEiXSwiaWF0IjoxNzE4Nzc5NTE4LCJleHAiOjE3MTg3ODMxMTh9.JY4CqmtOxbzpnst6IkTxfBSU_HztlMHSGJwVYCKoCYM'
+```
+
+> chức năng chính : lấy ra chi tiết học liệu
+
+> field bổ sung thêm :
+
+* Đếm tổng số ghi chú: totalNote
+* Đếm tổng số thảo luận: totalDiscussion
+
+> use case tương ứng cần thêm field này:
+
+```json
+UC910
+```
