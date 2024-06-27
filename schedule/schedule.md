@@ -36,7 +36,7 @@
 |1| 24 giờ |
 |2| 12 giờ |
 
-> Type định dạng đại lượ thời gian
+> Type định dạng đại lượng thời gian
 
 | Type   | Chú thích |
 |-------------| --------- |
