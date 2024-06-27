@@ -8,8 +8,10 @@
 - [7. API xem kết quả](#7-api-xem-kết-quả)
 - [8. API xem kết quả theo ngày](#8-api-xem-kết-quả-theo-ngày)
 - [9. API lưu report bài kiểm tra theo phiên](#9-api-lưu-report-bài-kiểm-tra-theo-phiên)
-
+- [10. API tìm kiếm bài tập, bài kiểm tra, bài thi](#10-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
 # 0. Một số chú thích ban đầu
+<h2>Phần thi</h2>
+
 > các type của câu hỏi :
 
 | Type   | Chú thích | loại câu hỏi |
@@ -27,6 +29,31 @@
 | 12  | Câu hỏi trả lời bằng file đính kèm         | content    |
 | 13  | Câu hỏi trả lời bằng ghi hình         | content    |
 | 14  | Câu hỏi trả lời bằng ghi âm         | content    |
+
+<br/>
+<hr/>
+<br/>
+
+<h2>Phần tìm kiếm bài thi, bài tập, kiểm tra</h2>
+> các type trạng thái (status) : dùng cho UC 914, 915, 916
+
+| Type   | Chú thích |
+|-------------| --------- |
+|1| Đã làm |
+|2| Chưa làm |
+|3| Sắp đến hạn nộp |
+
+> các type kết quả (resultStatus): dùng cho UC 914, 915, 916
+
+Chưa có use case để lưu trũ dữ liệu này
+
+> Type loại bài (type)
+
+| Type   | Chú thích |
+|-------------| --------- |
+|1| Bài tập |
+|2| Bài kiểm tra |
+|3| Bài thi |
 
 # 1. API bắt đầu làm bài kiểm tra
 > request
@@ -960,6 +987,218 @@ curl -X 'POST' \
 {
   "success": true,
   "data": null,
+  "message": "Thực hiện thành công"
+}
+```
+
+# 10. API tìm kiếm bài tập, bài kiểm tra, bài thi
+
+> UseCase tương ứng 
+```
+UseCase 920
+```
+
+> request
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/course/structure/exam/search/3' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTk0NjExNDQsImV4cCI6MTcxOTU0NzU0NH0.doHM2KTEhxJWgYuIWtrpk3ig1t1A435NYSxjU3alqG4' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "keyword": "",
+  "status": 0,
+  "submitDateFrom": "",
+  "submitDateTo": "",
+  "resultStatus": null,
+  "submitTime": null,
+  "type": null,
+  "sortByName": null,
+  "page": 1,
+  "size": 10
+}'
+```
+
+> request
+
+| Parameter   | Mandatory | datatype | Description | Note |
+|-------------| --------- |----------|-------------|-------------|
+|  keyword | n         | string     | từ khoá tìm kiếm  ||
+|  status | n | int|  Trạng thái |Xem lại phần chú thích (0. không lọc)|
+|  submitDateFrom | n |  date    | thời gian nộp bài từ  ||
+|  submitDateFrom | n |  date    | thời gian nộp bài đến  ||
+|  resultStatus | n |  int    | kết quả  |tạm thời không truyền gì (do chưa có dữ liệu)|
+|  submitTime | n |  int    | số lần nộp  bài||
+|  type | n |  int    | loại bài|Xem lại phàn chú thích (0. không lọc)|
+|  sortByName | n |  string    | sắp xếp|asc, desc|
+
+> response 
+
+```json
+{
+  "success": true,
+  "data": {
+    "exams": [
+      {
+        "id": 373, //blockId
+        "examType": 1, // tương ứng với "type" ở request
+        "name": "Bài tập về nhà",
+        "totalQuestions": 0, // tổng số câu hỏi trong bài
+        "duration": 4, // thời gian của bài, tính theo phút
+        "dateToCompleteBefore": null, // thời gian cần hoàn thành trước
+        "submitDate": "2024-06-27T04:28:46Z", // ngày nộp bài
+        "submitTime": 1, // số lần nộp
+        "allowedSubmitTime": 1000, // số lần nộp tối đa cho phép
+        "resultStatus": null, // kết quả 
+        "unitId": 1452,
+        "sequenceId": 589,
+        "sectionId": 5,
+        "overdue": false, // đã quá hạn chưa
+        "isRequired": true // bắt buộc hay không
+      },
+      {
+        "id": 417,
+        "examType": 1,
+        "name": "Test Group",
+        "totalQuestions": 0,
+        "duration": 6,
+        "dateToCompleteBefore": null,
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 5,
+        "resultStatus": null,
+        "unitId": 1520,
+        "sequenceId": 589,
+        "sectionId": 5,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 832,
+        "examType": 1,
+        "name": "Bài test 1",
+        "totalQuestions": 0,
+        "duration": 4,
+        "dateToCompleteBefore": null,
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 4,
+        "resultStatus": null,
+        "unitId": 2256,
+        "sequenceId": 1142,
+        "sectionId": 13,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 898,
+        "examType": 1,
+        "name": "Hóa học vô cơ",
+        "totalQuestions": 0,
+        "duration": 6,
+        "dateToCompleteBefore": "2024-12-29T21:11:35Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 8,
+        "resultStatus": null,
+        "unitId": 2357,
+        "sequenceId": 1180,
+        "sectionId": 850,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 899,
+        "examType": 2,
+        "name": "Hóa học hữu cơ",
+        "totalQuestions": 0,
+        "duration": 6,
+        "dateToCompleteBefore": "2024-12-29T21:11:35Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 8,
+        "resultStatus": null,
+        "unitId": 2358,
+        "sequenceId": 1180,
+        "sectionId": 850,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 900,
+        "examType": 3,
+        "name": "Bài tập điện phân",
+        "totalQuestions": 0,
+        "duration": 4,
+        "dateToCompleteBefore": "2024-12-29T21:11:35Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 4,
+        "resultStatus": null,
+        "unitId": 2359,
+        "sequenceId": 1180,
+        "sectionId": 850,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 901,
+        "examType": 1,
+        "name": "Giao động điều hòa ",
+        "totalQuestions": 0,
+        "duration": 6,
+        "dateToCompleteBefore": "2024-11-10T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 4,
+        "resultStatus": null,
+        "unitId": 2360,
+        "sequenceId": 1181,
+        "sectionId": 850,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 902,
+        "examType": 2,
+        "name": "Phản ứng hạt nhân",
+        "totalQuestions": 0,
+        "duration": 6,
+        "dateToCompleteBefore": "2024-11-10T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 3,
+        "resultStatus": null,
+        "unitId": 2361,
+        "sequenceId": 1181,
+        "sectionId": 850,
+        "overdue": false,
+        "isRequired": true
+      },
+      {
+        "id": 903,
+        "examType": 3,
+        "name": "Sóng ánh sáng",
+        "totalQuestions": 0,
+        "duration": 6,
+        "dateToCompleteBefore": "2024-11-10T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": 8,
+        "resultStatus": null,
+        "unitId": 2362,
+        "sequenceId": 1181,
+        "sectionId": 850,
+        "overdue": false,
+        "isRequired": true
+      }
+    ],
+    "totalNumber": 9, // tổng số tất cả
+    "testNumber": 2, // tổng số bài thi
+    "exerciseNumber": 5, // tổng số bài tập
+    "examNumber": 2 // tổng số bài thi
+  },
   "message": "Thực hiện thành công"
 }
 ```
