@@ -3,7 +3,7 @@
 - [2. API tìm kiếm lịch](#2-api-tìm-kiếm-lịch)
 - [3. API tạo cài đặt lịch](#3-api-tạo-cài-đặt-lịch)
 - [4. API cập nhật cài đặt lịch](#4-api-cập-nhật-cài-đặt-lịch)
-- [5. API lấy thông tin cài đặt lịch](#4-api-lấy-thông-tin-cài-đặt-lịch)
+- [5. API lấy thông tin cài đặt lịch](#5-api-lấy-thông-tin-cài-đặt-lịch)
 # 0. Một số chú thích ban đầu
 <h2>Phần xem bài tập, kiểm tra, thi</h2>
 
