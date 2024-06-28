@@ -6,6 +6,7 @@
 - [5. API lấy ra bài giảng của chương](#5-api-lấy-ra-bài-giảng-của-chương)
 - [6. API tải học liệu tham khảo](#6-api-tải-học-liệu-tham-khảo)
 - [7. API yêu thích học liệu tham khảo](#7-api-yêu-thích-học-liệu-tham-khảo)
+- [8. API xem lịch sử học liệu tham khảo](#8-api-xem-lịch-sử-học-liệu-tham-khảo)
 
 # 0. Một số chú thích ban đầu
 > Giải thích về học liệu tham khảo
@@ -371,3 +372,57 @@ curl -X 'POST' \
 |-------------| --------- |----------|-------------|------|
 | unitId  | y         | int     | id học liệu  ||
 |  isFavorite | y         | boolean     | yêu thích?  ||
+
+# 8. API xem lịch sử học liệu tham khảo
+
+> use case tương ứng : 917-4
+
+> curl 
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/history-course/get-unit-history-by-id?unitId=2236&page=1&size=10&sort=' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTk1NDAwODgsImV4cCI6MTcxOTYyNjQ4OH0.FnaHZJmvAPAfBG9TnRHfyhk5oQyUJamQBZOuqk801rI'
+```
+
+> response 
+
+```json
+{
+  "success": true,
+  "data": {
+    "content": [
+      {
+        "id": 12,
+        "unitId": 2236,
+        "title": "Chỉnh sửa học liệu",
+        "status": 2,
+        "userId": 4,
+        "userprofileName": "ADMIN",
+        "createdDate": "2024-06-13T08:49:10Z"
+      },
+      {
+        "id": 7,
+        "unitId": 2236,
+        "title": "Chỉnh sửa học liệu",
+        "status": 3,
+        "userId": 4,
+        "userprofileName": "ADMIN",
+        "createdDate": "2024-06-13T08:41:49Z"
+      }
+    ],
+    "pageable": "INSTANCE",
+    "totalElements": 2,
+    "totalPages": 1,
+    "last": true,
+    "size": 2,
+    "number": 0,
+    "sort": [],
+    "numberOfElements": 2,
+    "first": true,
+    "empty": false
+  },
+  "message": "Thực hiện thành công"
+}
+```
