@@ -381,9 +381,9 @@ curl -X 'POST' \
 
 ```json
 curl -X 'GET' \
-  'https://be.moooc.xyz/v2/api/history-course/get-unit-history-by-id?unitId=2236&page=1&size=10&sort=' \
+  'http://localhost:8080/api/history-course/get-unit-history-by-id?unitId=2448&page=1&size=10' \
   -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTk1NDAwODgsImV4cCI6MTcxOTYyNjQ4OH0.FnaHZJmvAPAfBG9TnRHfyhk5oQyUJamQBZOuqk801rI'
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9hbmd2eEBnbWFpbC5jb20iLCJlbWFpbCI6ImhvYW5ndnhAZ21haWwuY29tIiwiaWQiOjg0LCJpc1N1cGVyVXNlciI6ZmFsc2UsInBvc2l0aW9uIjoiaXNfc3YiLCJyb2xlcyI6W10sImlhdCI6MTcxOTgwNTAwOSwiZXhwIjoxNzE5ODkxNDA5fQ.hmVq2EMW_eINOUv31OWVMwILTcY-zsKk6ran6DY3q9c'
 ```
 
 > response 
@@ -394,32 +394,41 @@ curl -X 'GET' \
   "data": {
     "content": [
       {
-        "id": 12,
-        "unitId": 2236,
+        "id": 80,
+        "unitId": 2448,
         "title": "Chỉnh sửa học liệu",
         "status": 2,
         "userId": 4,
         "userprofileName": "ADMIN",
-        "createdDate": "2024-06-13T08:49:10Z"
+        "createdDate": "2024-07-01T09:21:23Z"
       },
       {
-        "id": 7,
-        "unitId": 2236,
+        "id": 79,
+        "unitId": 2448,
         "title": "Chỉnh sửa học liệu",
-        "status": 3,
+        "status": 2,
         "userId": 4,
         "userprofileName": "ADMIN",
-        "createdDate": "2024-06-13T08:41:49Z"
+        "createdDate": "2024-07-01T09:20:54Z"
+      },
+      {
+        "id": 78,
+        "unitId": 2448,
+        "title": "Tạo học liệu",
+        "status": null,
+        "userId": 4,
+        "userprofileName": "ADMIN",
+        "createdDate": "2024-07-01T09:20:41Z"
       }
     ],
     "pageable": "INSTANCE",
-    "totalElements": 2,
+    "totalElements": 3,
     "totalPages": 1,
     "last": true,
-    "size": 2,
+    "size": 3,
     "number": 0,
     "sort": [],
-    "numberOfElements": 2,
+    "numberOfElements": 3,
     "first": true,
     "empty": false
   },
