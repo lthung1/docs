@@ -1,9 +1,8 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
 - [1. API lấy ra danh sách khoá học của tôi](#1-api-lấy-ra-danh-sách-khoá-học-của-tôi)
 - [2. API tìm kiếm lịch](#2-api-tìm-kiếm-lịch)
-- [3. API tạo cài đặt lịch](#3-api-tạo-cài-đặt-lịch)
-- [4. API cập nhật cài đặt lịch](#4-api-cập-nhật-cài-đặt-lịch)
-- [5. API lấy thông tin cài đặt lịch](#5-api-lấy-thông-tin-cài-đặt-lịch)
+- [3. API cài đặt lịch](#3-api-cài-đặt-lịch)
+- [4. API lấy thông tin cài đặt lịch](#4-api-lấy-thông-tin-cài-đặt-lịch)
 # 0. Một số chú thích ban đầu
 <h2>Phần xem bài tập, kiểm tra, thi</h2>
 
@@ -213,7 +212,7 @@ curl -X 'POST' \
 }
 ```
 
-# 3. API tạo cài đặt lịch
+# 3. API cài đặt lịch
 
 > use case tương ứng : 920
 
@@ -221,20 +220,20 @@ curl -X 'POST' \
 
 ```json
 curl -X 'POST' \
-  'https://be.moooc.xyz/v2/api/course/structure/study/schedule-config/create' \
+  'https://be.moooc.xyz/v2/api/course/structure/study/schedule-config/config' \
   -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTkzOTA2NjYsImV4cCI6MTcxOTQ3NzA2Nn0.oQpuWZjAlodGj0FiEMdMSdyOaXfOpxhGlhVjFpoltZY' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9hbmd2eEBnbWFpbC5jb20iLCJlbWFpbCI6ImhvYW5ndnhAZ21haWwuY29tIiwiaWQiOjg0LCJpc1N1cGVyVXNlciI6ZmFsc2UsInBvc2l0aW9uIjoiaXNfc3YiLCJyb2xlcyI6W10sImlhdCI6MTcxOTgwNTAwOSwiZXhwIjoxNzE5ODkxNDA5fQ.hmVq2EMW_eINOUv31OWVMwILTcY-zsKk6ran6DY3q9c' \
   -H 'Content-Type: application/json' \
   -d '{
-  "dateForm": "string",
-  "timeForm": "string",
+  "dateForm": "1",
+  "timeForm": "1",
   "notifyStudy": true,
   "notifyTest": true,
-  "notifyExercise": true,
+  "notifyExercise": false,
   "notifyExam": true,
   "notifyLearnMore": true,
-  "timeLimitBefore": 0,
-  "timeTypeBefore": "string"
+  "timeLimitBefore": 1,
+  "timeTypeBefore": "4"
 }'
 ```
 
@@ -254,48 +253,7 @@ curl -X 'POST' \
 
 (xem lại mục #0 để xem hằng số)
 
-# 4. API cập nhật cài đặt lịch
-
-> use case tương ứng : 920
-
-> curl 
-
-```json
-curl -X 'POST' \
-  'https://be.moooc.xyz/v2/api/course/structure/study/schedule-config/update' \
-  -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTkzOTA2NjYsImV4cCI6MTcxOTQ3NzA2Nn0.oQpuWZjAlodGj0FiEMdMSdyOaXfOpxhGlhVjFpoltZY' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "id": 0,
-  "dateForm": "string",
-  "timeForm": "string",
-  "notifyStudy": true,
-  "notifyTest": true,
-  "notifyExercise": true,
-  "notifyExam": true,
-  "notifyLearnMore": true,
-  "timeLimitBefore": 0,
-  "timeTypeBefore": "string"
-}'
-```
-> request
-
-| Parameter   | Mandatory | datatype | Description | Note |
-|-------------| --------- |----------|-------------|------|
-| id  | y         | int     | id của cài đặt  ||
-| dateForm  | y         | int     | định dạng ngày  ||
-| timeForm  | y    | int     | định dạng giờ  ||
-| notifyStudy  | y    | boolean     | thông báo lịch học  ||
-| notifyTest  | y    | boolean     | thông báo lịch kiểm tra  ||
-| notifyExercise  | y    | boolean     | thông báo lịch bài tập  ||
-| notifyExam  | y    | boolean     | thông báo lịch thi  ||
-| notifyLearnMore  | y    | boolean     | thông báo lịch học thêm ||
-| timeLimitBefore  | y    | int | số đại lượng thời gian nhận thông báo trước ||
-| timeTypeBefore  | y    | int | đại lượng thời gian nhận thông báo trước ||
-
-
-# 5. API lấy thông tin cài đặt lịch
+# 4. API lấy thông tin cài đặt lịch
 
 > use case tương ứng : 920
 
