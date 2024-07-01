@@ -449,7 +449,7 @@ Các câu hỏi dạng nối sẽ là 1 mảng các object bao gồm phần bên
 
 > request
 ```json
-curl -X 'POST' \
+curl -X 'PUT' \
   'https://be.moooc.xyz/v2/api/course/structure/exam/pause' \
   -H 'accept: */*' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTgxNjA3MDEsImV4cCI6MTcxODI0NzEwMX0.OGRF1em_A-I1Qr7-HhAzShumpqULEroaTFutiUdLIWg' \
@@ -930,7 +930,7 @@ curl --location 'https://be.moooc.xyz/v2/api/course/structure/exam/submit-histor
 
 | Parameter   | Mandatory | datatype | Description |
 |-------------| --------- |----------|-------------|
-| quizId  | y         | long     | mã câu hỏi  |
+| blockId  | y         | long     | id của block  |
 
 > response
 
