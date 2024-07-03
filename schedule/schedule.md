@@ -288,14 +288,15 @@ curl -X 'GET' \
     "id": 2,
     "userId": 4,
     "dateForm": 1,
-    "timeForm": 1,
+    "timeForm": 3,
     "notifyStudy": true,
-    "notifyExercise": false,
+    "notifyExercise": true,
     "notifyTest": true,
     "notifyExam": true,
-    "notifyLearnMore": true,
-    "timeLimitBefore": 0,
-    "timeTypeBefore": 2
+    "notifyLearnMore": false,
+    "timeLimitBefore": null,
+    "timeTypeBefore": null,
+    "selectedOption": 4 // xem lại mục #0
   },
   "message": "Thực hiện thành công"
 }
