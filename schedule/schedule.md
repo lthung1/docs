@@ -44,6 +44,16 @@
 |3| giây |
 |4| tuần |
 |5| tháng |
+
+> Type lựa chọn "Thời gian thông báo" => selectedOption
+
+| Type   | Chú thích |
+|-------------| --------- |
+|1| Trước 01 tuần |
+|2| Trước 01 ngày |
+|3| Trước 01 giờ |
+|4| Tuỳ chọn |
+
 # 1. API lấy ra danh sách khoá học của tôi
 
 >use case tương ứng : UC920
@@ -222,18 +232,20 @@ curl -X 'POST' \
 curl -X 'POST' \
   'https://be.moooc.xyz/v2/api/course/structure/study/schedule-config/config' \
   -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9hbmd2eEBnbWFpbC5jb20iLCJlbWFpbCI6ImhvYW5ndnhAZ21haWwuY29tIiwiaWQiOjg0LCJpc1N1cGVyVXNlciI6ZmFsc2UsInBvc2l0aW9uIjoiaXNfc3YiLCJyb2xlcyI6W10sImlhdCI6MTcxOTgwNTAwOSwiZXhwIjoxNzE5ODkxNDA5fQ.hmVq2EMW_eINOUv31OWVMwILTcY-zsKk6ran6DY3q9c' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTk5NzMzODIsImV4cCI6MTcyMDA1OTc4Mn0.itSfyAWQpdFQOCCxra7-VSvpltuT19PNrybr3IbkObQ' \
   -H 'Content-Type: application/json' \
   -d '{
-  "dateForm": "1",
-  "timeForm": "1",
+  "dateForm": 1,
+  "timeForm": 3,
   "notifyStudy": true,
   "notifyTest": true,
-  "notifyExercise": false,
+  "notifyExercise": true,
   "notifyExam": true,
-  "notifyLearnMore": true,
-  "timeLimitBefore": 1,
-  "timeTypeBefore": "4"
+  "notifyLearnMore": false,
+  "timeLimitBefore": null,
+  "timeTypeBefore": null,
+  "selectedOption": 4
+}'
 }'
 ```
 
@@ -250,6 +262,7 @@ curl -X 'POST' \
 | notifyLearnMore  | y    | boolean     | thông báo lịch học thêm ||
 | timeLimitBefore  | y    | int | số đại lượng thời gian nhận thông báo trước ||
 | timeTypeBefore  | y    | int | đại lượng thời gian nhận thông báo trước ||
+| selectedOption  | y    | int | lưu trữ lựa chọn mục "Thời gian thông báo" | xem lại mục #0|
 
 (xem lại mục #0 để xem hằng số)
 

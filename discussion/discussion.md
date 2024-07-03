@@ -1303,9 +1303,6 @@ curl -X 'POST' \
 * isPinned: thảo luận có được ghim không
 
 # 9. API đếm số thảo luận của khóa học (Tất cả, của tôi, đã ghim)
-> note :
-
-* cần sửa lại, chưa dùng được, đổi tên đường dẫn thành get-count-by-course
 
 > use case tương ứng:
 ```
