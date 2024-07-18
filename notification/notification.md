@@ -1,10 +1,10 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
 - [1. Tìm kiếm thông báo](#1-tìm-kiếm-thông-báo)
-- [2. Đếm số thông báo chưa xem](#2.đếm-số-thông-báo-chưa-xem)
-- [3. Cập nhật thông báo thành đã xem, chưa xem](#3.cập-nhật-thông-báo-thành-đã-xem-chưa-xem)
-- [4. Đánh dấu đã xem tất cả thông báo](#4.đánh-dấu-đã-xem-tất-cả-thông-báo)
-- [5. Xóa thông báo](#5.xóa-thông-báo)
-- [6. Xóa tất cả thông báo](#6.xóa-tất-cả-thông-báo)
+- [2. Đếm số thông báo chưa xem](#2-đếm-số-thông-báo-chưa-xem)
+- [3. Cập nhật thông báo thành đã xem, chưa xem](#3-cập-nhật-thông-báo-thành-đã-xem-chưa-xem)
+- [4. Đánh dấu đã xem tất cả thông báo](#4-đánh-dấu-đã-xem-tất-cả-thông-báo)
+- [5. Xóa thông báo](#5-xóa-thông-báo)
+- [6. Xóa tất cả thông báo](#6-xóa-tất-cả-thông-báo)
 
 
 # 0. Một số chú thích ban đầu
