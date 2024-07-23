@@ -26,6 +26,9 @@
 - [8.5. Xác thực xóa với OTP](#85-xác-thực-xóa-với-otp)
 - [9. API lấy ra quốc gia, thành phố, quận huyện, phường xã](#9-api-lấy-ra-quốc-gia-thành-phố-quận-huyện-phường-xã)
 - [9.1. Quốc gia](#91-quốc-gia)
+- [9.2. Thành phố](#92-thành-phố)
+- [9.3. Quận huyện](#93-quận-huyện)
+- [9.4. Phường xã](#94-phường-xã)
 
 # 0. Một số chú thích ban đầu
 > những api nào cần sử dụng OTP, cần phải test trên email thực tế
