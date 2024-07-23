@@ -24,6 +24,8 @@
 - [8.3. Nhập mật khẩu để xóa](#83-nhập-mật-khẩu-để-xóa)
 - [8.4. Yêu cầu gửi OTP](#84-yêu-cầu-gửi-otp)
 - [8.5. Xác thực xóa với OTP](#85-xác-thực-xóa-với-otp)
+- [9. API lấy ra quốc gia, thành phố, quận huyện, phường xã](#9-api-lấy-ra-quốc-gia-thành-phố-quận-huyện-phường-xã)
+- [9.1. Quốc gia](#91-quốc-gia)
 
 # 0. Một số chú thích ban đầu
 > những api nào cần sử dụng OTP, cần phải test trên email thực tế
@@ -124,7 +126,7 @@ curl -X 'GET' \
 | Parameter   | Mandatory | datatype | Description | Note |
 |-------------| --------- |----------|-------------|------|
 | email  | y        | string     | email  ||
-| otp  | y       | string     | otp  | size = 6|
+| password  | y       | string     | mật khẩu mới  | |
 
 # 2. API quản lý tài khoản cá nhân
 
@@ -843,3 +845,50 @@ curl -X 'POST' \
   "otp": "11111"
 }'
 ```
+
+# 9. API lấy ra quốc gia, thành phố, quận huyện, phường xã
+# 9.1. Quốc gia
+
+> curl
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/open-api/address/countries' \
+  -H 'accept: */*'
+```
+
+# 9.2. Thành phố
+
+> curl
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/open-api/address/provinces?code=4' \
+  -H 'accept: */*'
+```
+
+* truyền vào mã quốc gia
+
+# 9.3. Quận huyện
+
+> curl
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/open-api/address/districts?code=01' \
+  -H 'accept: */*'
+```
+
+* truyền vào mã thành phố
+
+# 9.4. Phường xã
+
+> curl
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/open-api/address/wards?code=001' \
+  -H 'accept: */*'
+```
+
+* truyền vào mã quận huyện
