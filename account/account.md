@@ -466,83 +466,102 @@ curl -X 'POST' \
 > curl 
 
 ```json
-curl --location 'https://mooc-api.tunnel.techainer.com/recommendation/get-all' \
---header 'accept: */*' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W10sIm5hbWUiOiJoZ3Z4dW4iLCJpc1N1cGVyVXNlciI6ZmFsc2UsImlkIjo4NCwicG9zaXRpb24iOiJpc19xdGh0IiwiZW1haWwiOiJob2FuZ3Z4QGdtYWlsLmNvbSIsImV4cCI6MTcyMTMyNDU4NiwiaWF0IjoxNzIxMjM4MTg2fQ.iKUWGOntkIcHrrsG9ZxuKYhVwUKQT2o2inb95c9Fkcw' \
---data '{
-  
+curl -X 'POST' \
+  'https://mooc-api.tunnel.techainer.com/recommendation-tag/get-all-tag' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMjAyOTA0NCwiaWF0IjoxNzIxOTQyNjQ0fQ.xFK-CW-W-Usaf37uIQKjIXWvDyIQicKZtcZwAS0v2fE' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "k",
+  "skip": 1,
+  "take": 10
 }'
 ```
 > output 
 
 ```json
 {
-    "statusCode": 200,
-    "message": "Success",
-    "data": {
-        "data": [
-            {
-                "id": 75,
-                "name": "Khoa Hoc 9",
-                "code": "KH9",
-                "enterprise_uuid": "84b44910479d4f5486c8a44f4b37ccd8",
-                "mooc_course_industry": [],
-                "mooc_course_industry_group": [],
-                "mooc_recommendation": [
-                    {
-                        "id": 34,
-                        "created_at": "2024-07-16T06:41:40.000Z",
-                        "updated_at": "2024-07-16T06:41:40.000Z",
-                        "mooc_recommendation_tag": {
-                            "id": 2,
-                            "name": "Marketing"
-                        }
-                    }
-                ]
-            },
-            {
-                "id": 273,
-                "name": "HtestdongboH",
-                "code": "HtestdongboH",
-                "enterprise_uuid": null,
-                "mooc_course_industry": [
-                    {
-                        "mooc_industry": {
-                            "code": "7140101",
-                            "id": 1,
-                            "name": "Giáo dục học",
-                            "status": true
-                        }
-                    },
-                    {
-                        "mooc_industry": {
-                            "code": "7140111",
-                            "id": 2,
-                            "name": "Công nghệ giáo dục",
-                            "status": true
-                        }
-                    }
-                ],
-                "mooc_course_industry_group": [
-                    {
-                        "mooc_industry_group": {
-                            "id": 1,
-                            "code": "71401",
-                            "name": "Khoa học giáo dục",
-                            "status": true
-                        }
-                    }
-                ],
-                "mooc_recommendation": []
-            }
-        ],
-        "count": {
-            "_count": {
-                "id": 222
-            }
-        }
+  "statusCode": 200,
+  "message": "Success",
+  "data": {
+    "data": [
+      {
+        "id": 2,
+        "user_id": null,
+        "name": "Marketing",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 3,
+        "user_id": null,
+        "name": "Thiết kế web",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 5,
+        "user_id": null,
+        "name": "Sở thích khác,Nấu ăn",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 8,
+        "user_id": null,
+        "name": "Kỹ năng mềm",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 9,
+        "user_id": null,
+        "name": "Khoa học máy tính,Artificial Intelligence",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 15,
+        "user_id": null,
+        "name": "Marketing kỹ thuật số",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 17,
+        "user_id": null,
+        "name": "Sức khỏe và dinh dưỡng",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 20,
+        "user_id": null,
+        "name": "Marketing kỹ thuật số,SEO",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 21,
+        "user_id": null,
+        "name": "Kinh doanh,Quản lý dự án",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      },
+      {
+        "id": 24,
+        "user_id": null,
+        "name": "Social Media Marketing",
+        "created_at": "2024-06-18T03:37:51.000Z",
+        "updated_at": "2024-06-18T03:37:51.000Z"
+      }
+    ],
+    "total": {
+      "_count": {
+        "id": 29
+      }
     }
+  }
 }
 ```
 
