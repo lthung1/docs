@@ -151,12 +151,12 @@ curl -X 'GET' \
 
 ```json
 curl -X 'PUT' \
-  'https://be.moooc.xyz/v2/api/mooc-notifications/edit-notification-viewed/222' \
+  'https://be.moooc.xyz/v2/api/mooc-notifications/edit-notification-viewed/1?isViewed=true' \
   -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJjYXNjYWNhY3NjMTIzMjEiXSwibmFtZSI6ImVkeCIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjEzNDY4NzQsImlhdCI6MTcyMTI2MDQ3NH0.ducr8ImAxh4crJlNzH8I8Eiv4_CmL0bnPn0wi0WuzqQ'
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMjMxMzg1MiwiaWF0IjoxNzIyMjI3NDUyfQ.4tuCcK-idl3w1xk74S1F0Q-F-Gvx4M_rliUqL1HXlQY'
 ```
 
-* truyền vào notificationId
+* truyền vào notificationId, isViewed(đã xem chưa)
 
 # 4. Đánh dấu đã xem tất cả thông báo
 
