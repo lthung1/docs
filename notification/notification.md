@@ -52,8 +52,7 @@ curl -X 'POST' \
       "isViewed": false,
       "senderName": "Hệ thống",
       "title": "Thông báo hệ thôgns",
-      "sentDate": "2024-07-17T09:04:55Z",
-      "attachments": []
+      "sentDate": "2024-07-17T09:04:55Z"
     },
     {
       "id": 107,
@@ -62,8 +61,7 @@ curl -X 'POST' \
       "isViewed": true,
       "senderName": "Hệ thống",
       "title": "dsfsadgfsadfgsdf",
-      "sentDate": "2024-07-17T08:21:43Z",
-      "attachments": []
+      "sentDate": "2024-07-17T08:21:43Z"
     },
     {
       "id": 106,
@@ -72,8 +70,7 @@ curl -X 'POST' \
       "isViewed": false,
       "senderName": "Hệ thống",
       "title": "thêm thông báo",
-      "sentDate": "2024-07-17T07:28:41Z",
-      "attachments": []
+      "sentDate": "2024-07-17T07:28:41Z"
     },
     {
       "id": 105,
@@ -82,8 +79,7 @@ curl -X 'POST' \
       "isViewed": false,
       "senderName": "Hệ thống",
       "title": "Thêm mới thông báo",
-      "sentDate": "2024-07-17T06:42:00Z",
-      "attachments": []
+      "sentDate": "2024-07-17T06:42:00Z"
     }
   ],
   "pageable": {
