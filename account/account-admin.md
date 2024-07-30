@@ -14,7 +14,7 @@
 
 # 1. Lấy ra thông tin giảng viên
 
-> note: vì một số lí do khách quan nên field trả về hơi khó hiểu, anh/ chị chịu khó giúp em nhé ạ :>
+> note: vì một số lí do khách quan nên field trả về hơi khó hiểu, anh/ chị chịu khó giúp em nhé ạ :>. Xin cám ơn anh/ chị!!!
 
 >curl
 
@@ -193,7 +193,7 @@ curl -X 'PUT' \
 | name  | n       | string     | tên  | |
 | enterpriseUuid  | n       | string     | mã trường  | |
 | roleIds  | n       | int[]     | mã vai trò  | |
-| organizationId  | n       | int     | mã tổ chức  | |
+| organizationId  | n       | int     | mã đơn vị công tác  | |
 | positionIds  | n       | int[]     | mã chức vụ  | |
 
 # 3. Lấy ra danh sách chức vụ của giảng viên
