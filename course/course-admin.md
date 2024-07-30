@@ -1,4 +1,5 @@
 - [1. API xuất bản khoá học màn xây dựng nội dung](#1-api-xuất-bản-khoá-học-màn-xây-dựng-nội-dung)
+- [2. API lấy ra danh sách khoá học của giảng viên](#2-api-lấy-ra-danh-sách-khoá-học-của-giảng-viên)
 
 # 1. API xuất bản khoá học màn xây dựng nội dung
 
@@ -28,6 +29,130 @@ curl --location --request PUT 'https://be.moooc.xyz/v2/api/mooc-courses/publish'
 {
   "success": true,
   "data": null,
+  "message": "Thực hiện thành công"
+}
+```
+
+# 2. API lấy ra danh sách khoá học của giảng viên
+
+> curl
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/course-student-register/get-course-list' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMjQyMTgyMiwiaWF0IjoxNzIyMzM1NDIyfQ.itCePC5J-hikx9dtB2DT72dc6T5adspAXZvpjq8lJII' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "page": 1,
+  "size": 10,
+  "sort": [
+    "name,asc", "id,desc"
+  ],
+  "keyword": "1"
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "content": [
+      {
+        "name": "123213123123123123",
+        "id": 261
+      },
+      {
+        "name": "132132131",
+        "id": 257
+      },
+      {
+        "name": "1asdasdsa",
+        "id": 166
+      },
+      {
+        "name": "aaaaaaa",
+        "id": 145
+      },
+      {
+        "name": "aaaaaaaaaa",
+        "id": 185
+      },
+      {
+        "name": "abccxz",
+        "id": 152
+      },
+      {
+        "name": "cecececececececeeccde ",
+        "id": 165
+      },
+      {
+        "name": "Certificate 1",
+        "id": 292
+      },
+      {
+        "name": "cho nó chácw",
+        "id": 163
+      },
+      {
+        "name": "cstunggggggggggggggg",
+        "id": 187
+      }
+    ],
+    "pageable": {
+      "pageNumber": 0,
+      "pageSize": 10,
+      "sort": [
+        {
+          "direction": "ASC",
+          "property": "name",
+          "ignoreCase": false,
+          "nullHandling": "NATIVE",
+          "descending": false,
+          "ascending": true
+        },
+        {
+          "direction": "DESC",
+          "property": "id",
+          "ignoreCase": false,
+          "nullHandling": "NATIVE",
+          "descending": true,
+          "ascending": false
+        }
+      ],
+      "offset": 0,
+      "unpaged": false,
+      "paged": true
+    },
+    "totalPages": 15,
+    "totalElements": 146,
+    "last": false,
+    "size": 10,
+    "number": 0,
+    "sort": [
+      {
+        "direction": "ASC",
+        "property": "name",
+        "ignoreCase": false,
+        "nullHandling": "NATIVE",
+        "descending": false,
+        "ascending": true
+      },
+      {
+        "direction": "DESC",
+        "property": "id",
+        "ignoreCase": false,
+        "nullHandling": "NATIVE",
+        "descending": true,
+        "ascending": false
+      }
+    ],
+    "numberOfElements": 10,
+    "first": true,
+    "empty": false
+  },
   "message": "Thực hiện thành công"
 }
 ```
