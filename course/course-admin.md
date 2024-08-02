@@ -39,15 +39,15 @@ curl --location --request PUT 'https://be.moooc.xyz/v2/api/mooc-courses/publish'
 
 ```json
 curl -X 'POST' \
-  'https://be.moooc.xyz/v2/api/course-student-register/get-course-list' \
+  'https://be.moooc.xyz/v2/api/course-student-register/get-course-list-of-teacher' \
   -H 'accept: */*' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMjQyMTgyMiwiaWF0IjoxNzIyMzM1NDIyfQ.itCePC5J-hikx9dtB2DT72dc6T5adspAXZvpjq8lJII' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMjY3MTMzNCwiaWF0IjoxNzIyNTg0OTM0fQ.9dTj57Ry3GkCB_4PzlcIsbYKLzTKo120K1MqiBAYFGE' \
   -H 'Content-Type: application/json' \
   -d '{
   "page": 1,
   "size": 10,
   "sort": [
-    "name,asc", "id,desc"
+    "id,desc", "name,desc"
   ],
   "keyword": "1"
 }'
@@ -61,44 +61,74 @@ curl -X 'POST' \
   "data": {
     "content": [
       {
-        "name": "123213123123123123",
-        "id": 261
+        "id": 357,
+        "name": "Khóa học chơi daxua 15ff (Bản sao) (Bản sao)",
+        "enterpriseName": "ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+        "image": null,
+        "code": "KH_0fdb46bb7460"
       },
       {
-        "name": "132132131",
-        "id": 257
+        "id": 356,
+        "name": "Khóa học chơi daxua 15ff (Bản sao)",
+        "enterpriseName": "ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+        "image": null,
+        "code": "KH_a61f1ad72bf7"
       },
       {
-        "name": "1asdasdsa",
-        "id": 166
+        "id": 348,
+        "name": "Khóa học chơi daxua 15ff",
+        "enterpriseName": "ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+        "image": null,
+        "code": "GPMN1975"
       },
       {
-        "name": "aaaaaaa",
-        "id": 145
+        "id": 340,
+        "name": "test12312312345",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "test12312312345"
       },
       {
-        "name": "aaaaaaaaaa",
-        "id": 185
+        "id": 324,
+        "name": "Khoa hoc hungtest113y",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "323rdas113h"
       },
       {
-        "name": "abccxz",
-        "id": 152
+        "id": 323,
+        "name": "Khoa hoc hungtest113",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "323rdas113"
       },
       {
-        "name": "cecececececececeeccde ",
-        "id": 165
+        "id": 321,
+        "name": "Khoa hoc hungtest11338",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "323rdas11338ww"
       },
       {
-        "name": "Certificate 1",
-        "id": 292
+        "id": 320,
+        "name": "Khoa hoc hungtest11338",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "323rdas11338"
       },
       {
-        "name": "cho nó chácw",
-        "id": 163
+        "id": 319,
+        "name": "Khoa hoc hungtest1133",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "323rdas1133"
       },
       {
-        "name": "cstunggggggggggggggg",
-        "id": 187
+        "id": 318,
+        "name": "Khoa hoc hungtest11",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "image": null,
+        "code": "323rdas11"
       }
     ],
     "pageable": {
@@ -106,16 +136,16 @@ curl -X 'POST' \
       "pageSize": 10,
       "sort": [
         {
-          "direction": "ASC",
-          "property": "name",
+          "direction": "DESC",
+          "property": "id",
           "ignoreCase": false,
           "nullHandling": "NATIVE",
-          "descending": false,
-          "ascending": true
+          "descending": true,
+          "ascending": false
         },
         {
           "direction": "DESC",
-          "property": "id",
+          "property": "name",
           "ignoreCase": false,
           "nullHandling": "NATIVE",
           "descending": true,
@@ -123,26 +153,26 @@ curl -X 'POST' \
         }
       ],
       "offset": 0,
-      "unpaged": false,
-      "paged": true
+      "paged": true,
+      "unpaged": false
     },
     "totalPages": 15,
-    "totalElements": 146,
+    "totalElements": 148,
     "last": false,
     "size": 10,
     "number": 0,
     "sort": [
       {
-        "direction": "ASC",
-        "property": "name",
+        "direction": "DESC",
+        "property": "id",
         "ignoreCase": false,
         "nullHandling": "NATIVE",
-        "descending": false,
-        "ascending": true
+        "descending": true,
+        "ascending": false
       },
       {
         "direction": "DESC",
-        "property": "id",
+        "property": "name",
         "ignoreCase": false,
         "nullHandling": "NATIVE",
         "descending": true,
