@@ -39,7 +39,7 @@ curl --location --request PUT 'https://be.moooc.xyz/v2/api/mooc-courses/publish'
 
 ```json
 curl -X 'POST' \
-  'https://be.moooc.xyz/v2/api/course-student-register/get-course-list-of-teacher' \
+  'https://be.moooc.xyz/v2/api/course-student-register/get-course-list' \
   -H 'accept: */*' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMjY3MTMzNCwiaWF0IjoxNzIyNTg0OTM0fQ.9dTj57Ry3GkCB_4PzlcIsbYKLzTKo120K1MqiBAYFGE' \
   -H 'Content-Type: application/json' \
