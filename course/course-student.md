@@ -2,6 +2,7 @@
 - [1. Lọc khóa học](#1-lọc-khóa-học)
 - [2. Lọc chuyên ngành](#2-lọc-chuyên-ngành)
 - [3. Lọc trường](#3-lọc-trường)
+- [4. Lấy khóa học nổi bật](#4-lấy-khóa-học-nổi-bật)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
