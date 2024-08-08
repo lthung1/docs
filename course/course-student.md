@@ -2,6 +2,7 @@
 - [1. Lọc khóa học](#1-lọc-khóa-học)
 - [2. Lọc chuyên ngành](#2-lọc-chuyên-ngành)
 - [3. Lọc trường](#3-lọc-trường)
+- [4. Lấy khóa học nổi bật](#4-lấy-khóa-học-nổi-bật)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -463,6 +464,79 @@ curl -X 'POST' \
       "slug": "HUST"
     }
   ],
+  "message": "Thực hiện thành công"
+}
+Response headers
+```
+
+
+# 4. Lấy khóa học nổi bật
+
+> curl
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/open-api/course/get-featured-course' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  
+}'
+```
+
+> output 
+
+```json
+{
+  "success": true,
+  "data": {
+    "courses": [
+      {
+        "id": 129,
+        "name": "Demo Course",
+        "cost": null,
+        "avgStar": 5,
+        "assigners": [
+          {
+            "uuid": "84b44910479d4f5486c8a44f4b37ccd7",
+            "name": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+            "slug": "NEU",
+            "isSponsor": true
+          }
+        ],
+        "totalStudents": 1,
+        "industryName": null,
+        "publicDate": null,
+        "reviewDescription": {
+          "id": 129,
+          "name": "Demo Course",
+          "description": null,
+          "slug": null,
+          "universityName": null,
+          "completedTime": 0
+        },
+        "thumbnailUrl": null,
+        "uuid": "84b44910479d4f5486c8a44f4b37ccd7",
+        "slug": "NEU",
+        "universityName": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+        "completedTime": 0,
+        "teachers": [
+          {
+            "id": 16,
+            "firstName": "Ánh",
+            "lastName": "Nguyễn Thuận",
+            "fullName": "Ánh Nguyễn Thuận",
+            "username": "anhnt@gmail.com"
+          }
+        ],
+        "completedPercentage": null,
+        "totalReview": 1,
+        "isRegistered": false,
+        "isSaved": false
+      }
+    ],
+    "total": 1
+  },
   "message": "Thực hiện thành công"
 }
 Response headers
