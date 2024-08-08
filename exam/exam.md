@@ -59,7 +59,7 @@ Chưa có use case để lưu trũ dữ liệu này
 > request
 ```json
 curl -X 'POST' \
-  'https://be.moooc.xyz/v2/api/course/structure/exam' \
+  'https://be.moooc.xyz/v2/api/course/structure/exam-v2' \
   -H 'accept: */*' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZWR4IiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJpZCI6NCwiaXNTdXBlclVzZXIiOnRydWUsInBvc2l0aW9uIjoiaXNfcXRjcyIsInJvbGVzIjpbIkzDo25oIMSR4bqhbyIsImNhc2NhY2Fjc2MxMjMyMSJdLCJpYXQiOjE3MTgxNjA3MDEsImV4cCI6MTcxODI0NzEwMX0.OGRF1em_A-I1Qr7-HhAzShumpqULEroaTFutiUdLIWg' \
   -H 'Content-Type: application/json' \
