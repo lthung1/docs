@@ -116,6 +116,8 @@ curl -X 'POST' \
 
 * Bây giờ: căn cứ vào field <i>isAbleToComment</i> (true => hiện lên), (false => disable)
 
+> minh họa
+
 * api 
 
 ```json
@@ -125,7 +127,7 @@ curl -X 'GET' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMzIxMjI3NywiaWF0IjoxNzIzMTI1ODc3fQ.2jUENGvR_oUGNE99b4xTDEMxP0VptELruCjb-M1MrCk'
 ```
 
-> response
+* response
 
 ```json
 {
