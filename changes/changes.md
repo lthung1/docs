@@ -4,7 +4,7 @@
 - [3. API tìm kiếm khóa học của tôi](#3-api-tìm-kiếm-khóa-học-của-tôi)
 - [4. API xem chi tiết khóa học](#4-api-xem-chi-tiết-khóa-học)
 - [5. API xem chi tiết học liệu](#5-api-xem-chi-tiết-học-liệu)
-- [6. API xem bắt đầu khoá học](#6-api-bắt-đầu-khoá-học)
+- [6. API bắt đầu khoá học](#6-api-bắt-đầu-khoá-học)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -276,7 +276,7 @@ curl -X 'GET' \
 }
 ```
 
-# 6. API xem bắt đầu khoá học
+# 6. API bắt đầu khoá học
 
 > ngày cập nhật: 09/08/2024
 
