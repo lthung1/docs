@@ -4,6 +4,7 @@
 - [3. API tìm kiếm khóa học của tôi](#3-api-tìm-kiếm-khóa-học-của-tôi)
 - [4. API xem chi tiết khóa học](#4-api-xem-chi-tiết-khóa-học)
 - [5. API xem chi tiết học liệu](#5-api-xem-chi-tiết-học-liệu)
+- [6. API xem bắt đầu khoá học](#6-api-bắt-đầu-khoá-học)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -274,3 +275,15 @@ curl -X 'GET' \
   "message": "Thực hiện thành công"
 }
 ```
+
+# 6. API xem bắt đầu khoá học
+
+> design figma: 
+
+```json
+https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=63-57758&t=TZPmQ94XmjN3kNDK-0
+```
+
+> Nội dung thay đổi
+
+* đối với nút đi đến cấu trúc khoá học, có 3 loại <b>Bắt đầu học</b>, <b>Tiếp tục học</b>, <b>Học lại</b> => khi bấm vào nút <b>Bắt đầu học</b> thì call api này để bắt đầu tính thời gian sinh viên phát sinh tiến trình học, các nút còn lại không call.
