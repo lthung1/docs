@@ -278,6 +278,8 @@ curl -X 'GET' \
 
 # 6. API xem bắt đầu khoá học
 
+> ngày cập nhật: 09/08/2024
+
 > design figma: 
 
 ```json
