@@ -9,6 +9,7 @@
 - [8. API xem kết quả theo ngày](#8-api-xem-kết-quả-theo-ngày)
 - [9. API lưu report bài kiểm tra theo phiên](#9-api-lưu-report-bài-kiểm-tra-theo-phiên)
 - [10. API tìm kiếm bài tập, bài kiểm tra, bài thi](#10-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
+- [11. Luồng upload file nộp bài quiz](#11-luồng-upload-file-nộp-bài-quiz)
 # 0. Một số chú thích ban đầu
 <h2>Phần thi</h2>
 
@@ -1200,5 +1201,223 @@ curl -X 'POST' \
     "examNumber": 2 // tổng số bài thi
   },
   "message": "Thực hiện thành công"
+}
+```
+
+# 11. Luồng upload file nộp bài quiz
+
+> step 1: call api upload file
+
+* api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/mooc-course-block-quiz/upload-file' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMzI5Mjg4NSwiaWF0IjoxNzIzMjA2NDg1fQ.qgd9dgouBCDPeYuskQP2E7IRF2aS6Bu_h_6mIoXfuuA' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@dummy-ref.pdf;type=application/pdf'
+```
+
+* response
+
+```json
+{
+  "fileName": "quiz/20240809122829836.pdf",
+  "filePath": "https://s3.moooc.xyz/dev-stable/quiz/20240809122829836.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T122830Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25200&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f8bf095d0bf7f89e645797b58ee2437902551c00851432e582b4deb47a3ccf4e"
+}
+```
+
+> step 2: truyền response lấy được sau khi upload file vào answer
+
+* api nộp bài
+
+```json
+curl 'https://be.moooc.xyz/v2/api/course/structure/exam/submit' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: vi,en-US;q=0.9,en;q=0.8,fr-FR;q=0.7,fr;q=0.6' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJRVEtIIiwiR2nhuqNuZyB2acOqbiJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMzI1NzQ2MiwiaWF0IjoxNzIzMTcxMDYyfQ.LzMgXobBJUqi3NdOYBdoRo2K-IgxVymRvnbQb7Cbll0' \
+  -H 'content-type: application/json' \
+  -H 'origin: http://localhost:3000' \
+  -H 'priority: u=1, i' \
+  -H 'referer: http://localhost:3000/' \
+  -H 'sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' \
+  --data-raw '{"blockId":891,"quizRequests":[{"type":14,"quizId":3788,"questionType":"ContentRequest","answer":["https://s3.moooc.xyz/dev-stable/quiz/20240809084715696.?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T084716Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25200&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=528eaefe9f06e2245d48450c73697d1c5d75a115054169b1acf84124652182e8"]},{"type":12,"quizId":3790,"questionType":"ContentRequest","answer":["https://s3.moooc.xyz/dev-stable/quiz/20240809084835772.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T084837Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25200&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=629f1a528b51f65ff55b0829a673e076367383f662fb86078ccb313ff3080899"]},{"type":3,"quizId":3793,"questionType":"ChoosingRequest","answer":["6b25a352-9402-4b54-b2f1-7bfdcf815f86"]},{"type":7,"quizId":3798,"questionType":"ChoosingRequest","answer":["1b614498-6d85-4ca2-b0bd-50b7017fdc2e"]},{"type":2,"quizId":3792,"questionType":"ChoosingRequest","answer":["d24e088a-c339-4e5e-9a7a-3342a64042ad"]},{"type":4,"quizId":3794,"questionType":"ChoosingRequest","answer":["86150f98-fd67-4f4e-afb9-f2ee4e069ab5"]},{"type":5,"quizId":3795,"questionType":"ChoosingRequest","answer":["26114890-7e09-46d1-a49e-cf03b55cfd20"]},{"type":9,"quizId":3787,"questionType":"ContentRequest","answer":["Cau hoi tu luan"]},{"type":8,"quizId":3799,"questionType":"ChoosingRequest","answer":["45bace40-12d6-4e74-8d40-0a781c00a938","004f00a4-ae6e-483d-bcbb-ae1ef06a8607"]},{"type":11,"quizId":3800,"questionType":"ConnectingRequest","answer":[{"left":{"key":"b583785d-ec26-40ba-9ac3-e55625bf91e0","content":"She is not a"},"right":{"key":"401d30d7-545e-443f-8c42-62b51a837610","content":"fishing"},"swapped":["401d30d7-545e-443f-8c42-62b51a837610","8e94c864-083a-4196-9287-89568197ae5a","401d30d7-545e-443f-8c42-62b51a837610","8e94c864-083a-4196-9287-89568197ae5a","71e46044-7a44-4da1-81f9-d50aa4ab5407","8e94c864-083a-4196-9287-89568197ae5a"]},{"left":{"key":"0bbb6b88-29dd-43c7-81ec-ffb7bfb95f10","content":"My father like"},"right":{"key":"71e46044-7a44-4da1-81f9-d50aa4ab5407","content":"teacher"},"swapped":["401d30d7-545e-443f-8c42-62b51a837610","8e94c864-083a-4196-9287-89568197ae5a","401d30d7-545e-443f-8c42-62b51a837610","8e94c864-083a-4196-9287-89568197ae5a","71e46044-7a44-4da1-81f9-d50aa4ab5407","8e94c864-083a-4196-9287-89568197ae5a"]},{"left":{"key":"9208f733-d913-4712-9dc6-b64742f51a91","content":"I am a"},"right":{"key":"8e94c864-083a-4196-9287-89568197ae5a","content":"student"},"swapped":["401d30d7-545e-443f-8c42-62b51a837610","8e94c864-083a-4196-9287-89568197ae5a","401d30d7-545e-443f-8c42-62b51a837610","8e94c864-083a-4196-9287-89568197ae5a","71e46044-7a44-4da1-81f9-d50aa4ab5407","8e94c864-083a-4196-9287-89568197ae5a"]}]},{"type":1,"quizId":3791,"questionType":"ChoosingRequest","answer":["c26a2473-65b7-4a17-aa59-8ca7218ea0cc"]},{"type":6,"quizId":3796,"questionType":"ChoosingRequest","answer":["903a64c7-a3cd-4016-bf94-be8b36051409","4e8696f3-b5e9-451d-b04d-bf64b3e637f3","c0dbd782-c579-4039-9313-a1071d232e51"]},{"type":13,"quizId":3789,"questionType":"ContentRequest","answer":["https://s3.moooc.xyz/dev-stable/quiz/20240809085158925.?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T085159Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25199&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ae2a89757c7a68d4f446622ee88032fa56b519abe18cd00a1ba0bc12224c1f95"]}],"isAutoSubmitted":false}'
+```
+
+* format lại request body (file url sẽ được lấy từ api upload file => truyền vào answer)
+
+```json
+{
+    "blockId": 891,
+    "quizRequests": [
+        {
+            "type": 14,
+            "quizId": 3788,
+            "questionType": "ContentRequest",
+            "answer": [
+                "https://s3.moooc.xyz/dev-stable/quiz/20240809084715696.?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T084716Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25200&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=528eaefe9f06e2245d48450c73697d1c5d75a115054169b1acf84124652182e8"
+            ]
+        },
+        {
+            "type": 12,
+            "quizId": 3790,
+            "questionType": "ContentRequest",
+            "answer": [
+                "https://s3.moooc.xyz/dev-stable/quiz/20240809084835772.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T084837Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25200&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=629f1a528b51f65ff55b0829a673e076367383f662fb86078ccb313ff3080899"
+            ]
+        },
+        {
+            "type": 3,
+            "quizId": 3793,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "6b25a352-9402-4b54-b2f1-7bfdcf815f86"
+            ]
+        },
+        {
+            "type": 7,
+            "quizId": 3798,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "1b614498-6d85-4ca2-b0bd-50b7017fdc2e"
+            ]
+        },
+        {
+            "type": 2,
+            "quizId": 3792,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "d24e088a-c339-4e5e-9a7a-3342a64042ad"
+            ]
+        },
+        {
+            "type": 4,
+            "quizId": 3794,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "86150f98-fd67-4f4e-afb9-f2ee4e069ab5"
+            ]
+        },
+        {
+            "type": 5,
+            "quizId": 3795,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "26114890-7e09-46d1-a49e-cf03b55cfd20"
+            ]
+        },
+        {
+            "type": 9,
+            "quizId": 3787,
+            "questionType": "ContentRequest",
+            "answer": [
+                "Cau hoi tu luan"
+            ]
+        },
+        {
+            "type": 8,
+            "quizId": 3799,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "45bace40-12d6-4e74-8d40-0a781c00a938",
+                "004f00a4-ae6e-483d-bcbb-ae1ef06a8607"
+            ]
+        },
+        {
+            "type": 11,
+            "quizId": 3800,
+            "questionType": "ConnectingRequest",
+            "answer": [
+                {
+                    "left": {
+                        "key": "b583785d-ec26-40ba-9ac3-e55625bf91e0",
+                        "content": "She is not a"
+                    },
+                    "right": {
+                        "key": "401d30d7-545e-443f-8c42-62b51a837610",
+                        "content": "fishing"
+                    },
+                    "swapped": [
+                        "401d30d7-545e-443f-8c42-62b51a837610",
+                        "8e94c864-083a-4196-9287-89568197ae5a",
+                        "401d30d7-545e-443f-8c42-62b51a837610",
+                        "8e94c864-083a-4196-9287-89568197ae5a",
+                        "71e46044-7a44-4da1-81f9-d50aa4ab5407",
+                        "8e94c864-083a-4196-9287-89568197ae5a"
+                    ]
+                },
+                {
+                    "left": {
+                        "key": "0bbb6b88-29dd-43c7-81ec-ffb7bfb95f10",
+                        "content": "My father like"
+                    },
+                    "right": {
+                        "key": "71e46044-7a44-4da1-81f9-d50aa4ab5407",
+                        "content": "teacher"
+                    },
+                    "swapped": [
+                        "401d30d7-545e-443f-8c42-62b51a837610",
+                        "8e94c864-083a-4196-9287-89568197ae5a",
+                        "401d30d7-545e-443f-8c42-62b51a837610",
+                        "8e94c864-083a-4196-9287-89568197ae5a",
+                        "71e46044-7a44-4da1-81f9-d50aa4ab5407",
+                        "8e94c864-083a-4196-9287-89568197ae5a"
+                    ]
+                },
+                {
+                    "left": {
+                        "key": "9208f733-d913-4712-9dc6-b64742f51a91",
+                        "content": "I am a"
+                    },
+                    "right": {
+                        "key": "8e94c864-083a-4196-9287-89568197ae5a",
+                        "content": "student"
+                    },
+                    "swapped": [
+                        "401d30d7-545e-443f-8c42-62b51a837610",
+                        "8e94c864-083a-4196-9287-89568197ae5a",
+                        "401d30d7-545e-443f-8c42-62b51a837610",
+                        "8e94c864-083a-4196-9287-89568197ae5a",
+                        "71e46044-7a44-4da1-81f9-d50aa4ab5407",
+                        "8e94c864-083a-4196-9287-89568197ae5a"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": 1,
+            "quizId": 3791,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "c26a2473-65b7-4a17-aa59-8ca7218ea0cc"
+            ]
+        },
+        {
+            "type": 6,
+            "quizId": 3796,
+            "questionType": "ChoosingRequest",
+            "answer": [
+                "903a64c7-a3cd-4016-bf94-be8b36051409",
+                "4e8696f3-b5e9-451d-b04d-bf64b3e637f3",
+                "c0dbd782-c579-4039-9313-a1071d232e51"
+            ]
+        },
+        {
+            "type": 13,
+            "quizId": 3789,
+            "questionType": "ContentRequest",
+            "answer": [
+                "https://s3.moooc.xyz/dev-stable/quiz/20240809085158925.?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240809T085159Z&X-Amz-SignedHeaders=host&X-Amz-Expires=25199&X-Amz-Credential=ihWotP7nBIXENZiD%2F20240809%2Fap-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ae2a89757c7a68d4f446622ee88032fa56b519abe18cd00a1ba0bc12224c1f95"
+            ]
+        }
+    ],
+    "isAutoSubmitted": false
 }
 ```
