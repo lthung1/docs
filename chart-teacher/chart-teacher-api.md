@@ -8,6 +8,8 @@
 - [7. Tỷ lệ kết quả đánh giá theo khóa học](#7-Tỷ-lệ-kết-quả-làm-đánh-giá-theo-khóa-học)
 - [8. Tỷ lệ kết quả làm đánh giá theo học liệu](#8-Tỷ-lệ-kết-quả-làm-đánh-giá-theo-học-liệu)
 - [9. Tỷ lệ kết quả đánh giá theo bài giảng](#9-Tỷ-lệ-kết-quả-đánh-giá-theo-bài-giảng)
+- [10. Số lượng bài kiểm tra theo loại](#10-Số-lượng-bài-kiểm-tra-theo-loại)
+- [11. Số lượng tài liệu tham khảo theo loại](#11-Số-lượng-tài-liệu-tham-khảo-theo-loại)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -530,3 +532,87 @@ curl -X 'POST' \
 }
 ```
 
+# 10. Số lượng bài kiểm tra theo loại
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-reference-source-by-type' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMzg5MDgxMiwiaWF0IjoxNzIzODA0NDEyfQ.xcQTd239p7F2cnutlpC6y0blFhKZFSvpZuToWFtqO3s' \
+  -H 'Content-Type: application/json' \
+  -d '{
+
+  "from": "2024-01-16T10:31:40.061Z",
+  "to": "2024-08-16T10:31:40.061Z"
+  
+}'
+```
+> output
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": 3, 
+      "criteria": "Mp3", //Loại Học liệu
+      "count": 15, // Số lượng học liệu
+      "percentage": 7.317073 // Số Phần trăm học liệu
+    },
+    {
+      "type": 1,
+      "criteria": "Video", 
+      "count": 129,
+      "percentage": 62.92683
+    },
+    {
+      "type": 2,
+      "criteria": "Pdf",
+      "count": 61,
+      "percentage": 29.7561
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+# 11. Số lượng tài liệu tham khảo theo loại
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-test-by-type' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyMzg5MDgxMiwiaWF0IjoxNzIzODA0NDEyfQ.xcQTd239p7F2cnutlpC6y0blFhKZFSvpZuToWFtqO3s' \
+  -H 'Content-Type: application/json' \
+  -d '{
+
+  "from": "2024-01-16T10:35:44.429Z",
+  "to": "2024-08-16T10:35:44.429Z"
+
+}'
+```
+> output
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": 1,
+      "criteria": "Bài Tập",
+      "count": 481, 
+      "percentage": 84.53427
+    },
+    {
+      "type": 2,
+      "criteria": "Bài Kiểm Tra",
+      "count": 69, 
+      "percentage": 12.126538
+    },
+    {
+      "type": 3,
+      "criteria": "Bài Thi",
+      "count": 19,
+      "percentage": 3.3391914
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
