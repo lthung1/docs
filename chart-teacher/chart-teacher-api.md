@@ -1,12 +1,12 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
 - [1. Số lượng khóa học theo hình thức xuất bản](#1-Số-lượng-khóa-học-theo-hình-thức-xuất-bản)
 - [2. Số lượng bài giảng theo trạng thái xuất bản](#2-Số-lượng-bài-giảng-theo-trạng-thái-xuất-bản)
-- [3. Số lượng bài học theo khoa](#3-Số-lượng-bài-học-theo-khoa)
-- [4. Số lượng Scorm & xAPI](#4-Số-lượng-Scorm-&-xAPI)
+- [3. Số lượng bài giảng theo khoa](#3-Số-lượng-bài-học-theo-khoa)
+- [4. Số lượng học liệu theo Scorm & xAPI](#4-Số-lượng-Scorm-&-xAPI)
 - [5. Số lượng học liệu đa phương tiện theo loại](#5-Số-lượng-học-liệu-đa-phương-tiện-theo-loại)
 - [6. Số lượng học liệu theo khóa học](#6-Số-lượng-học-liệu-theo-khóa-học)
 - [7. Tỷ lệ kết quả đánh giá theo khóa học](#7-Tỷ-lệ-kết-quả-làm-đánh-giá-theo-khóa-học)
-- [8. Tỷ lệ kết quả làm đánh giá theo module](#8-lọc-trường)
+- [8. Tỷ lệ kết quả làm đánh giá theo học liệu](#8-Tỷ-lệ-kết-quả-làm-đánh-giá-theo-học-liệu)
 - [9. Tỷ lệ kết quả đánh giá theo bài giảng](#9-Tỷ-lệ-kết-quả-đánh-giá-theo-bài-giảng)
 
 # 0. Một số chú thích ban đầu
@@ -69,9 +69,9 @@ curl -X 'POST' \
   "data": [
     {
       "type": 1,
-      "criteria": "Thẻ ghi danh",
-      "count": 258,
-      "percentage": 98.85057
+      "criteria": "Thẻ ghi danh", // tên hình thức xuất bản
+      "count": 258, // số lượng khóa học
+      "percentage": 98.85057 // số phần trăm của khóa học theo hình thức xuất bản
     },
     {
       "type": 2,
@@ -119,9 +119,9 @@ curl -X 'POST' \
   "data": [
     {
       "type": 0,
-      "criteria": "Bản nháp",
-      "count": 687,
-      "percentage": 92.5876
+      "criteria": "Bản nháp", // tên trạng thái xuất bản
+      "count": 687, // số lượng bài giảng
+      "percentage": 92.5876 // số phần trăm bài giảng theo trạng thái xuất bản
     },
     {
       "type": 1,
@@ -140,7 +140,7 @@ curl -X 'POST' \
 }
 ```
 
-# 3. Số lượng bài học theo khoa
+# 3. Số lượng bài giảng theo khoa
 ```json
 curl -X 'POST' \
   'http://be.moooc.xyz/v2/api/chart-teacher/get-sequence-by-industry-group' \
@@ -168,10 +168,10 @@ curl -X 'POST' \
   "success": true,
   "data": [
     {
-      "type": 32,
-      "criteria": "Công nghệ thông tin",
-      "count": 2,
-      "percentage": 0.17636684
+      "type": 32, // id của khoa
+      "criteria": "Công nghệ thông tin", // tên khoa
+      "count": 2, // số lượng bài giảng của khoa
+      "percentage": 0.17636684 // số phần trăm bài giảng theo khoa
     },
     {
       "type": 5,
@@ -196,7 +196,7 @@ curl -X 'POST' \
 }
 ```
 
-# 4. Số lượng Scorm & xAPI
+# 4. Số lượng học liệu theo Scorm & xAPI
 ```json
 curl -X 'POST' \
   'http://be.moooc.xyz/v2/api/chart-teacher/get-scorm-and-xapi-unit' \
@@ -226,9 +226,9 @@ curl -X 'POST' \
   "data": [
     {
       "type": 1,
-      "criteria": "scorm",
-      "count": 8,
-      "percentage": 12.5
+      "criteria": "scorm", //tên loại học liệu
+      "count": 8, // số lượng học liệu
+      "percentage": 12.5 // số phần trăm của học liệu theo scorm & xapi
     },
     {
       "type": 2,
@@ -270,9 +270,9 @@ curl -X 'POST' \
   "data": [
     {
       "type": 3,
-      "criteria": "text",
-      "count": 27,
-      "percentage": 20.149254
+      "criteria": "text", // loại học liệu đa phương tiện
+      "count": 27, // số lượng của học liệu đa phương tiện
+      "percentage": 20.149254 // số phần trăm của học liệu đa phương tiện theo loại
     },
     {
       "type": 4,
@@ -325,13 +325,13 @@ curl -X 'POST' \
   "data": {
     "statistic": [
       {
-        "type": 192,
-        "criteria": "khoá học 105",
+        "type": 192, // id của khóa học
+        "criteria": "khoá học 105", // tên khóa học
         "values": [
           {
-            "count": 2,
+            "count": 2, // số lượng học liệu
             "percentage": null,
-            "criteria": "Bài kiểm tra"
+            "criteria": "Bài kiểm tra" // loại học liệu
           }
         ]
       },
@@ -397,13 +397,13 @@ curl -X 'POST' \
   "data": {
     "statistic": [
       {
-        "type": 3,
-        "criteria": "Xác suất thống kê",
+        "type": 3, // id của khóa học
+        "criteria": "Xác suất thống kê", // tên của khóa học
         "values": [
           {
-            "count": 1,
-            "percentage": 33.33,
-            "criteria": "4 sao"
+            "count": 1, // số lượng đánh giá
+            "percentage": 33.33, // số phần trăm đánh giá
+            "criteria": "4 sao" //loại sao
           },
           {
             "count": 3,
@@ -420,7 +420,7 @@ curl -X 'POST' \
 }
 ```
 
-# 8. Tỷ lệ kết quả làm đánh giá theo module
+# 8. Tỷ lệ kết quả làm đánh giá theo học liệu
 ```json
 curl -X 'POST' \
   'http://be.moooc.xyz/v2/api/chart-teacher/get-rate-unit-by-module' \
@@ -449,13 +449,13 @@ curl -X 'POST' \
   "data": {
     "statistic": [
       {
-        "type": 3,
-        "criteria": "Scorm & xAPi",
+        "type": 3, 
+        "criteria": "Scorm & xAPi", // loại học liệu
         "values": [
           {
-            "count": 1,
-            "percentage": 33.33,
-            "criteria": "4 sao"
+            "count": 1, // số lượng đánh giá
+            "percentage": 33.33, // số phần trăm đánh giá
+            "criteria": "4 sao" // loại sao
           },
           {
             "count": 3,
@@ -501,13 +501,13 @@ curl -X 'POST' \
   "data": {
     "statistic": [
       {
-        "type": 1268,
-        "criteria": "Bài giảng 1",
+        "type": 1268,  //id của bài giảng
+        "criteria": "Bài giảng 1", //Tên bài giảng
         "values": [
           {
-            "count": 4,
-            "percentage": 100,
-            "criteria": "4 sao"
+            "count": 4,    //số lượng đánh giá
+            "percentage": 100, // phần trăm đánh giá
+            "criteria": "4 sao" // loại sao
           }
         ]
       },
