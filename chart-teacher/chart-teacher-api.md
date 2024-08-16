@@ -553,14 +553,14 @@ curl -X 'POST' \
   "success": true,
   "data": [
     {
-      "type": 3,
-      "criteria": "Mp3",
-      "count": 15,
-      "percentage": 7.317073
+      "type": 3, 
+      "criteria": "Mp3", //Loại Học liệu
+      "count": 15, // Số lượng học liệu
+      "percentage": 7.317073 // Số Phần trăm học liệu
     },
     {
       "type": 1,
-      "criteria": "Video",
+      "criteria": "Video", 
       "count": 129,
       "percentage": 62.92683
     },
@@ -597,13 +597,13 @@ curl -X 'POST' \
     {
       "type": 1,
       "criteria": "Bài Tập",
-      "count": 481,
+      "count": 481, 
       "percentage": 84.53427
     },
     {
       "type": 2,
       "criteria": "Bài Kiểm Tra",
-      "count": 69,
+      "count": 69, 
       "percentage": 12.126538
     },
     {
