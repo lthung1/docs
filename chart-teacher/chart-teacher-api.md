@@ -18,26 +18,69 @@
 
 ```json
 {
-  "timeUnit": 0, // đơn vị 
-  "from": "2024-08-16T09:07:39.376Z",
-  "to": "2024-08-16T09:07:39.376Z",
-  "courseLevelIds": [
+  "timeUnit": "string", // đơn vị thời gian
+  "from": "2024-08-18T23:19:14.912Z",
+  "to": "2024-08-18T23:19:14.912Z",
+  "courseLevelIds": [ // cấp khóa học
     0
   ],
-  "industryGroupIds": [
+  "industryGroupIds": [ // mã khoa
     0
   ],
-  "courseIds": [
+  "courseIds": [ // mã khóa học
     0
   ],
-  "courseStructureType": 0,
-  "moduleGroup": 0,
-  "toDateTime": "2024-08-16",
-  "fromDateTime": "2024-08-16",
-  "modules": [
-    "string"
-  ]
+  "courseStructureType": "string", // loại cấu trúc khóa học
+  "moduleGroup": 0, // nhóm các module học liệu
+  "unitActionType": 0 // hành vi người dùng đối với học liệu
 }
+```
+* Các giá trị nhận vào của request body
+
+```json
+- timeUnit (string)
+  + luôn luôn phải có đối với các biểu đồ thống kê theo thời gian 
+  + truyền vào đơn vị thời gian muốn làm tiêu chí thống kê
+  + Các giá trị nhận vào: day, week, month, year
+  + Logic nhập tương ứng với bộ lọc khoảng thời gian
+    . 7 ngày => day
+    . 1 tháng => week
+    . 3 tháng => month
+    . Tùy chọn => nhập vào theo giá trị tương ứng của bộ lọc đơn vị (thời gian)
+
+- from, to: giới hạn thời gian muốn thống kê
+
+- courseLevelIds: (int[])
+  + chưa có thông tin về field này (bổ sung api sau)
+
+- industryGroupIds: (int[])
+  + nhập dựa trên api trả về 
+  + bổ sung api sau ngày 19/08/2024
+
+- courseIds: (int[])
+  + nhập dựa trên api trả về 
+  + dùng api khóa học của giảng viên, có thể thay đổi
+
+- courseStructureType (string)
+  + dùng cho bộ lọc riêng trên từng biểu đồ
+  + giá trị nhận vào
+    . khóa học: "course"
+    . bài giảng: "sequence"
+    . các giá trị khác: "unit"
+
+- moduleGroup (int)
+  + dùng khi courseStructureType = "unit"
+  + các giá trị nhận vào
+    . Đa phương tiện:  1
+    . Tài liệu tham khảo: 2
+    . Bài Tập/Bài Kiểm Tra/Bài Thi: 3
+    . Scorm & Xapi: 4
+
+- unitActionType (int)
+  + các giá trị nhận vào
+    . Xem: 1
+    . Chia sẻ: 2
+    . Tải về: 3
 ```
 
 
