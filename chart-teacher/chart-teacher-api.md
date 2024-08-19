@@ -1,4 +1,5 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
+- [0.1 Api lấy khoa của giảng viên](#0-1-api-lấy-khoa-của-giảng-viên)
 - [1. Số lượng khóa học theo hình thức xuất bản](#1-Số-lượng-khóa-học-theo-hình-thức-xuất-bản)
 - [2. Số lượng bài giảng theo trạng thái xuất bản](#2-Số-lượng-bài-giảng-theo-trạng-thái-xuất-bản)
 - [3. Số lượng bài giảng theo khoa](#3-Số-lượng-bài-học-theo-khoa)
@@ -12,6 +13,11 @@
 - [11. Số lượng tài liệu tham khảo theo loại](#11-Số-lượng-tài-liệu-tham-khảo-theo-loại)
 - [12. Thống kê phản hồi theo bài giảng](#12-Thống-kê-phản-hồi-theo-bài-giảng)
 - [13. Thống kê phản hồi theo lớp học](#13-Thống-kê-phản-hồi-theo-lớp-học)
+- [14. Thống kê hành vi người dùng, tab xem](#14-Thống-kê-hành-vi-người-dùng-tab-xem)
+- [15. Thống kê hành vi người dùng, tab chia sẻ](#15-Thống-kê-hành-vi-người-dùng-tab-chia-sẻ)
+- [16. Số lượng đánh giá theo thời gian](#16-Số-lượng-đánh-giá-theo-thời-gian)
+- [17. Số lượng khoá học theo phân công](#17-Số-lượng-khoá-học-theo-phân-công)
+
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
 
@@ -82,6 +88,120 @@
     . Xem: 1
     . Chia sẻ: 2
     . Tải về: 3
+```
+
+# 0.1 Api lấy khoa của giảng viên
+
+> api
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-industry-group-filter' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDEyMDQ5NSwiaWF0IjoxNzI0MDM0MDk1fQ.GF93H3r8_f1UuIsn1xkyN0GKdUsyn2bUsDPYebFrHRw'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "Năng khiếu Mỹ thuật ứng dụng",
+      "id": 6
+    },
+    {
+      "name": "Máy tính",
+      "id": 31
+    },
+    {
+      "name": "Năng khiếu Mỹ thuật",
+      "id": 3
+    },
+    {
+      "name": "Năng khiếu Trình diễn",
+      "id": 4
+    },
+    {
+      "name": "Quản lý công nghiệp",
+      "id": 37
+    },
+    {
+      "name": "Đào tạo giáo viên sư phạm",
+      "id": 2
+    },
+    {
+      "name": "Thú y",
+      "id": 54
+    },
+    {
+      "name": "Ngôn ngữ, Văn học và Văn hóa nước ngoài",
+      "id": 8
+    },
+    {
+      "name": "Công nghệ thông tin",
+      "id": 32
+    },
+    {
+      "name": "Công nghệ Kỹ thuật cơ khí",
+      "id": 34
+    },
+    {
+      "name": "Khoa học giáo dục",
+      "id": 1
+    },
+    {
+      "name": "Công nghệ kỹ thuật kiến trúc và công trình xây dựng",
+      "id": 33
+    },
+    {
+      "name": "Xã hội học và nhân học",
+      "id": 11
+    },
+    {
+      "name": "Báo chí và truyền thông",
+      "id": 15
+    },
+    {
+      "name": "Năng khiếu Nghe nhìn",
+      "id": 5
+    },
+    {
+      "name": "Toán học",
+      "id": 29
+    },
+    {
+      "name": "Văn thư, lưu trữ, bảo tàng",
+      "id": 17
+    },
+    {
+      "name": "Địa lý học",
+      "id": 13
+    },
+    {
+      "name": "Công nghệ Kỹ thuật điện, điện tử và viễn thông",
+      "id": 35
+    },
+    {
+      "name": "Công nghệ hóa học, vật liệu, luyện kim và môi trường",
+      "id": 36
+    },
+    {
+      "name": "Thông tin – Thư viện",
+      "id": 16
+    },
+    {
+      "name": "Ngôn ngữ, Văn học và Văn hóa Việt Nam",
+      "id": 7
+    },
+    {
+      "name": "Hóa học",
+      "id": 73
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
 ```
 
 
@@ -756,5 +876,211 @@ curl -X 'POST' \
     ]
   },
   "message": "string"
+}
+```
+
+# 14. Thống kê hành vi người dùng, tab xem
+
+> api 
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/by-time/get-unit-action' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDEyMDQ5NSwiaWF0IjoxNzI0MDM0MDk1fQ.GF93H3r8_f1UuIsn1xkyN0GKdUsyn2bUsDPYebFrHRw' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "timeUnit": "week",
+  "from": "2023-08-19T11:05:02.302Z",
+  "to": "2024-08-19T11:05:02.302Z",
+  "courseStructureType": "unit",
+  "moduleGroup": 1,
+  "unitActionType": 1
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "criteria": "17-23/09",
+      "value": 1
+    },
+    {
+      "criteria": "15-21/10",
+      "value": 1
+    },
+    {
+      "criteria": "22-28/10",
+      "value": 2
+    },
+    {
+      "criteria": "17-23/12",
+      "value": 1
+    },
+    {
+      "criteria": "16-22/06",
+      "value": 2
+    },
+    {
+      "criteria": "23-29/06",
+      "value": 1
+    },
+    {
+      "criteria": "07-13/07",
+      "value": 1
+    },
+    {
+      "criteria": "28-03/07",
+      "value": 1
+    },
+    {
+      "criteria": "04-10/08",
+      "value": 3
+    },
+    {
+      "criteria": "11-17/08",
+      "value": 121
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 15. Thống kê hành vi người dùng, tab chia sẻ
+
+* tương tự tab xem => unitActionType = 2
+
+# 16. Số lượng đánh giá theo thời gian
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/by-time/get-unit-review-and-access' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDEyMDQ5NSwiaWF0IjoxNzI0MDM0MDk1fQ.GF93H3r8_f1UuIsn1xkyN0GKdUsyn2bUsDPYebFrHRw' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "timeUnit": "week",
+  "from": "2023-08-19T11:05:02.302Z",
+  "to": "2024-08-19T11:05:02.302Z",
+  "moduleGroup": 1
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "criteria": "18-24/02", // tiêu chí
+      "columnValue": 0, // giá trị cột
+      "lineValue": 1 // giá trị đường
+    },
+    {
+      "criteria": "16-22/06",
+      "columnValue": 0,
+      "lineValue": 1
+    },
+    {
+      "criteria": "28-03/07",
+      "columnValue": 4,
+      "lineValue": 0
+    },
+    {
+      "criteria": "24-30/12",
+      "columnValue": 0,
+      "lineValue": 1
+    },
+    {
+      "criteria": "14-20/01",
+      "columnValue": 0,
+      "lineValue": 2
+    },
+    {
+      "criteria": "17-23/03",
+      "columnValue": 0,
+      "lineValue": 1
+    },
+    {
+      "criteria": "20-26/08",
+      "columnValue": 1,
+      "lineValue": 0
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 17. Số lượng khoá học theo phân công
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/by-time/get-course-assign-teacher' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDEyMDQ5NSwiaWF0IjoxNzI0MDM0MDk1fQ.GF93H3r8_f1UuIsn1xkyN0GKdUsyn2bUsDPYebFrHRw' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "timeUnit": "week",
+  "from": "2023-08-19T11:05:02.302Z",
+  "to": "2024-09-19T11:05:02.302Z",
+  "courseStructureType": "unit",
+  "moduleGroup": 1,
+  "unitActionType": 1
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "18-24/08",
+        "values": [
+          {
+            "count": 299,
+            "percentage": null,
+            "criteria": "Xây dựng"
+          },
+          {
+            "count": 292,
+            "percentage": null,
+            "criteria": "Hướng dẫn"
+          }
+        ]
+      }
+    ],
+    "total": 591,
+    "subTotal": [
+      {
+        "type": 1,
+        "criteria": "Xây dựng",
+        "total": 292
+      },
+      {
+        "type": 2,
+        "criteria": "Hướng dẫn",
+        "total": 299
+      },
+      {
+        "type": 3,
+        "criteria": "Tổng số",
+        "total": 591
+      }
+    ]
+  },
+  "message": "Thực hiện thành công"
 }
 ```
