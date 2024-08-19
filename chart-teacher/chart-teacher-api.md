@@ -10,7 +10,8 @@
 - [9. Tỷ lệ kết quả đánh giá theo bài giảng](#9-Tỷ-lệ-kết-quả-đánh-giá-theo-bài-giảng)
 - [10. Số lượng bài kiểm tra theo loại](#10-Số-lượng-bài-kiểm-tra-theo-loại)
 - [11. Số lượng tài liệu tham khảo theo loại](#11-Số-lượng-tài-liệu-tham-khảo-theo-loại)
-
+- [12. Thống kê phản hồi theo bài giảng](#12-Thống-kê-phản-hồi-theo-bài-giảng)
+- [13. Thống kê phản hồi theo lớp học](#13-Thống-kê-phản-hồi-theo-lớp-học)
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
 
@@ -657,5 +658,103 @@ curl -X 'POST' \
     }
   ],
   "message": "Thực hiện thành công"
+}
+```
+# 12. Thống kê phản hồi theo bài giảng
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-rate-sequence-action' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDEyMTEwMywiaWF0IjoxNzI0MDM0NzAzfQ._Pr-8sCeeHQ1mjhwoDNjnld4AFTrpTZP-hEscsgyd4o' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "from": "2024-01-19T02:31:17.246Z",
+  "to": "2024-08-19T02:31:17.246Z"
+}'
+```
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": 1136, //Id bài giảng
+        "criteria": "Bài giảng đạo đức", //Tên bài giảng
+        "values": [
+          {
+            "count": 2,
+            "percentage": 100,
+            "criteria": "Đa Phương Tiện"
+          }
+        ]
+      },
+      {
+        "type": 1139,
+        "criteria": "Sơn Tùng M-TP",
+        "values": [
+          {
+            "count": 1,
+            "percentage": 100,
+            "criteria": "Đa Phương Tiện"
+          }
+        ]
+      },
+      {
+        "type": 589,
+        "criteria": "Bài 1:",
+        "values": [
+          {
+            "count": 1,
+            "percentage": 100,
+            "criteria": "Đa Phương Tiện"
+          }
+        ]
+      }
+    ],
+    "total": 4,
+    "subTotal": []
+  },
+  "message": "Thực hiện thành công"
+}
+```
+# 13. Thống kê phản hồi theo lớp học
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-rate-class-action' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDEyMTEwMywiaWF0IjoxNzI0MDM0NzAzfQ._Pr-8sCeeHQ1mjhwoDNjnld4AFTrpTZP-hEscsgyd4o' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "from": "2024-01-19T02:32:54.041Z",
+  "to": "2024-08-19T02:32:54.041Z"
+}'
+```
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": 0, //Id lớp học
+        "criteria": "string", //Tên lớp học
+        "values": [
+          {
+            "count": 0,
+            "percentage": 0,
+            "criteria": "string"
+          }
+        ]
+      }
+    ],
+    "total": 0,
+    "subTotal": [
+      {
+        "type": 0,
+        "criteria": "string",
+        "total": "string"
+      }
+    ]
+  },
+  "message": "string"
 }
 ```
