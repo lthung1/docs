@@ -20,7 +20,7 @@
 - [17. Số lượng khoá học theo phân công](#17-Số-lượng-khoá-học-theo-phân-công)
 - [18. Thống kê số lượng tìm kiếm toàn hệ thống theo thời gian](#18-thống-kê-số-lượng-tìm-kiếm-toàn-hệ-thống-theo-thời-gian)
 - [19. Số lượng tìm kiếm theo từ khoá](#19-số-lượng-tìm-kiếm-theo-từ-khoá)
-- [20. Thống kê số lượng phản hổi](#20-thống-kê-số-lượng-phản-hồi)
+- [20. Thống kê số lượng phản hồi](#20-thống-kê-số-lượng-phản-hồi)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -1350,7 +1350,7 @@ curl -X 'POST' \
 }
 ```
 
-# 20. Thống kê số lượng phản hổi
+# 20. Thống kê số lượng phản hồi
 
 > api
 
