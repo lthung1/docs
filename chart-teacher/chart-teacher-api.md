@@ -1,6 +1,6 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
 - [0.1 Api lấy khoa của giảng viên](#0-1-api-lấy-khoa-của-giảng-viên)
-- [0.1 Api lấy khóa học ghi danh của giảng viên](#0-2-api-lấy-khóa-học-ghi-danh-của-giảng-viên)
+- [0.2 Api lấy khóa học ghi danh của giảng viên](#0-2-api-lấy-khóa-học-ghi-danh-của-giảng-viên)
 - [1. Số lượng khóa học theo hình thức xuất bản](#1-Số-lượng-khóa-học-theo-hình-thức-xuất-bản)
 - [2. Số lượng bài giảng theo trạng thái xuất bản](#2-Số-lượng-bài-giảng-theo-trạng-thái-xuất-bản)
 - [3. Số lượng bài giảng theo khoa](#3-Số-lượng-bài-học-theo-khoa)
@@ -21,6 +21,7 @@
 - [18. Thống kê số lượng tìm kiếm toàn hệ thống theo thời gian](#18-thống-kê-số-lượng-tìm-kiếm-toàn-hệ-thống-theo-thời-gian)
 - [19. Số lượng tìm kiếm theo từ khoá](#19-số-lượng-tìm-kiếm-theo-từ-khoá)
 - [20. Thống kê số lượng phản hồi](#20-thống-kê-số-lượng-phản-hồi)
+- [21. Thống kê đánh giá theo Bài kiểm tra cho Lớp ghi danh](#20-Thống-kê-đánh-giá-theo-Bài-kiểm-tra-cho-Lớp-ghi-danh)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -1467,6 +1468,32 @@ curl -X 'POST' \
         "total": 0
       }
     ]
+  },
+  "message": "Thực hiện thành công"
+}
+```
+# 21. Thống kê đánh giá theo Bài kiểm tra cho Lớp ghi danh
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-star-rating-exam' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDIxNDM1NSwiaWF0IjoxNzI0MTI3OTU1fQ.ACtH1IkgEey9Nq5oWw6LbS4_aE6BEvDGAbxlvK_cH1o' \
+  -H 'Content-Type: application/json' \
+  -d '{
+ 
+  "from": "2024-01-20T10:56:48.009Z",
+  "to": "2024-08-20T10:56:48.009Z",
+  "classId": 4 // Truyền ClassId của giảng viên
+  
+}'
+```
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [],
+    "total": 0,
+    "subTotal": []
   },
   "message": "Thực hiện thành công"
 }
