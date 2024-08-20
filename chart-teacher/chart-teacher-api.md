@@ -17,6 +17,9 @@
 - [15. Thống kê hành vi người dùng, tab chia sẻ](#15-Thống-kê-hành-vi-người-dùng-tab-chia-sẻ)
 - [16. Số lượng đánh giá theo thời gian](#16-Số-lượng-đánh-giá-theo-thời-gian)
 - [17. Số lượng khoá học theo phân công](#17-Số-lượng-khoá-học-theo-phân-công)
+- [18. Thống kê số lượng tìm kiếm toàn hệ thống theo thời gian](#18-thống-kê-số-lượng-tìm-kiếm-toàn-hệ-thống-theo-thời-gian)
+- [19. Số lượng tìm kiếm theo từ khoá](#19-số-lượng-tìm-kiếm-theo-từ-khoá)
+- [20. Thống kê số lượng phản hổi](#20-thống-kê-số-lượng-phản-hồi)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -1078,6 +1081,297 @@ curl -X 'POST' \
         "type": 3,
         "criteria": "Tổng số",
         "total": 591
+      }
+    ]
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 18. Thống kê số lượng tìm kiếm toàn hệ thống theo thời gian
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/by-time/get-search-history' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDIwNTMxMywiaWF0IjoxNzI0MTE4OTEzfQ._kDAkF8TgMyiFZx5z9K1wpzoxISktaCSu62nYVnEzhk' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "timeUnit": "year",
+  "from": "2023-08-20T03:39:02.900Z",
+  "to": "2024-08-20T03:39:02.900Z",
+  "courseStructureType": "course"
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "2023",
+        "values": [
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Đa Phương Tiện"
+          },
+          {
+            "count": 5,
+            "percentage": null,
+            "criteria": "Bài Tập/Bài Kiểm Tra/Bài Thi"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Tài Liệu Tham Khảo"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Bài giảng"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Khoá học"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "2024",
+        "values": [
+          {
+            "count": 35,
+            "percentage": null,
+            "criteria": "Đa Phương Tiện"
+          },
+          {
+            "count": 8,
+            "percentage": null,
+            "criteria": "Bài Tập/Bài Kiểm Tra/Bài Thi"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Tài Liệu Tham Khảo"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Bài giảng"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Khoá học"
+          }
+        ]
+      }
+    ],
+    "total": 48, // tổng
+    "subTotal": [
+      {
+        "type": null,
+        "criteria": "Bài giảng",
+        "total": 0
+      },
+      {
+        "type": null,
+        "criteria": "Đa Phương Tiện",
+        "total": 35
+      },
+      {
+        "type": null,
+        "criteria": "Bài Tập/Bài Kiểm Tra/Bài Thi",
+        "total": 13
+      },
+      {
+        "type": null,
+        "criteria": "Khoá học",
+        "total": 0
+      },
+      {
+        "type": null,
+        "criteria": "Tài Liệu Tham Khảo",
+        "total": 0
+      }
+    ]
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 19. Số lượng tìm kiếm theo từ khoá
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/get-search-keyword-count' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDIwNTMxMywiaWF0IjoxNzI0MTE4OTEzfQ._kDAkF8TgMyiFZx5z9K1wpzoxISktaCSu62nYVnEzhk' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "from": "2023-08-20T11:03:35.795Z",
+  "to": "2024-08-20T11:03:35.795Z",
+  "courseStructureType": "unit",
+  "moduleGroup": 1
+}'
+```
+
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": null,
+      "criteria": "con ga",
+      "count": 12,
+      "percentage": 34.285717
+    },
+    {
+      "type": null,
+      "criteria": "Học liệu video ",
+      "count": 6,
+      "percentage": 17.142859
+    },
+    {
+      "type": null,
+      "criteria": "Sửa học liệu ccccc 123",
+      "count": 17,
+      "percentage": 48.57143
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 20. Thống kê số lượng phản hổi
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/chart-teacher/by-time/get-unit-discuss' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDIwNTMxMywiaWF0IjoxNzI0MTE4OTEzfQ._kDAkF8TgMyiFZx5z9K1wpzoxISktaCSu62nYVnEzhk' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "timeUnit": "week",
+  "from": "2023-08-20T11:07:27.091Z",
+  "to": "2024-08-20T11:07:27.091Z",
+  "courseStructureType": "unit",
+  "moduleGroup": 1
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "2023",
+        "values": [
+          {
+            "count": 4,
+            "percentage": null,
+            "criteria": "Đa Phương Tiện"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Bài Tập/Bài Kiểm Tra/Bài Thi"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Tài Liệu Tham Khảo"
+          },
+          {
+            "count": 4,
+            "percentage": null,
+            "criteria": "Bài giảng"
+          },
+          {
+            "count": 4,
+            "percentage": null,
+            "criteria": "Khoá học"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "2024",
+        "values": [
+          {
+            "count": 11,
+            "percentage": null,
+            "criteria": "Đa Phương Tiện"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Bài Tập/Bài Kiểm Tra/Bài Thi"
+          },
+          {
+            "count": 0,
+            "percentage": null,
+            "criteria": "Tài Liệu Tham Khảo"
+          },
+          {
+            "count": 11,
+            "percentage": null,
+            "criteria": "Bài giảng"
+          },
+          {
+            "count": 11,
+            "percentage": null,
+            "criteria": "Khoá học"
+          }
+        ]
+      }
+    ],
+    "total": 15,
+    "subTotal": [
+      {
+        "type": null,
+        "criteria": "Bài giảng",
+        "total": 15
+      },
+      {
+        "type": null,
+        "criteria": "Đa Phương Tiện",
+        "total": 15
+      },
+      {
+        "type": null,
+        "criteria": "Bài Tập/Bài Kiểm Tra/Bài Thi",
+        "total": 0
+      },
+      {
+        "type": null,
+        "criteria": "Khoá học",
+        "total": 15
+      },
+      {
+        "type": null,
+        "criteria": "Tài Liệu Tham Khảo",
+        "total": 0
       }
     ]
   },
