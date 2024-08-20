@@ -1,5 +1,6 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
 - [0.1 Api lấy khoa của giảng viên](#0-1-api-lấy-khoa-của-giảng-viên)
+- [0.1 Api lấy khóa học ghi danh của giảng viên](#0-2-api-lấy-khóa-học-ghi-danh-của-giảng-viên)
 - [1. Số lượng khóa học theo hình thức xuất bản](#1-Số-lượng-khóa-học-theo-hình-thức-xuất-bản)
 - [2. Số lượng bài giảng theo trạng thái xuất bản](#2-Số-lượng-bài-giảng-theo-trạng-thái-xuất-bản)
 - [3. Số lượng bài giảng theo khoa](#3-Số-lượng-bài-học-theo-khoa)
@@ -203,6 +204,98 @@ curl -X 'GET' \
   "message": "Thực hiện thành công"
 }
 ```
+
+# 0.2 Api lấy khóa học ghi danh của giảng viên
+
+> api
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/teacher-possession/filter-class-enroll' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDIxNDM1NSwiaWF0IjoxNzI0MTI3OTU1fQ.ACtH1IkgEey9Nq5oWw6LbS4_aE6BEvDGAbxlvK_cH1o'
+```
+
+> response
+
+```json
+
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "Course 1"
+    },
+    {
+      "id": 2,
+      "name": "Course 2"
+    },
+    {
+      "id": 3,
+      "name": "Course 3"
+    },
+    {
+      "id": 4,
+      "name": "Course 4"
+    },
+    {
+      "id": 5,
+      "name": "Course 5"
+    },
+    {
+      "id": 7,
+      "name": "Lop ghi danh thang 60606"
+    },
+    {
+      "id": 8,
+      "name": "test1"
+    },
+    {
+      "id": 9,
+      "name": "test2"
+    },
+    {
+      "id": 10,
+      "name": "test3"
+    },
+    {
+      "id": 11,
+      "name": "test4"
+    },
+    {
+      "id": 12,
+      "name": "test5"
+    },
+    {
+      "id": 13,
+      "name": "lớp cccccccccccc"
+    },
+    {
+      "id": 14,
+      "name": "test3"
+    },
+    {
+      "id": 15,
+      "name": "test6"
+    },
+    {
+      "id": 16,
+      "name": "test1"
+    },
+    {
+      "id": 19,
+      "name": "Lopws sssa"
+    },
+    {
+      "id": 20,
+      "name": "gfgfgf"
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
 
 
 # 1. Số lượng khóa học theo hình thức xuất bản
