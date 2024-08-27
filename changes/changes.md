@@ -292,7 +292,7 @@ https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=63-57758&t
 
 * đối với nút đi đến cấu trúc khoá học, có 3 loại <b>Bắt đầu học</b>, <b>Tiếp tục học</b>, <b>Học lại</b> => khi bấm vào nút <b>Bắt đầu học</b> thì call api này để bắt đầu tính thời gian sinh viên phát sinh tiến trình học, các nút còn lại không call.
 
-* đối với màn tìm kiếm khoá học của tôi => check list khoá học (learningStatus = 1) => call api
+* đối với màn tìm kiếm khoá học của tôi, khi điều hướng đến cấu trúc khoá học => check list khoá học (learningStatus = 1) => call api
 
 
 > api: 
