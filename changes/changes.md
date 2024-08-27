@@ -280,12 +280,26 @@ curl -X 'GET' \
 
 > ngày cập nhật: 09/08/2024
 
-> design figma: 
+> design figma: (UC890, UC888)
 
 ```json
 https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=63-57758&t=TZPmQ94XmjN3kNDK-0
 ```
 
+
+
 > Nội dung thay đổi
 
 * đối với nút đi đến cấu trúc khoá học, có 3 loại <b>Bắt đầu học</b>, <b>Tiếp tục học</b>, <b>Học lại</b> => khi bấm vào nút <b>Bắt đầu học</b> thì call api này để bắt đầu tính thời gian sinh viên phát sinh tiến trình học, các nút còn lại không call.
+
+* đối với màn tìm kiếm khoá học của tôi => check list khoá học (learningStatus = 1) => call api
+
+
+> api: 
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/my-registration/start-learning-course/3' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDgxMTEyMywiaWF0IjoxNzI0NzI0NzIzfQ.BTZTeDgSxEj5Ri23YeEutQGz2aqun-orumbJCyZYw1c'
+```
