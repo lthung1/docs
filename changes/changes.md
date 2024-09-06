@@ -5,6 +5,11 @@
 - [4. API xem chi tiết khóa học](#4-api-xem-chi-tiết-khóa-học)
 - [5. API xem chi tiết học liệu](#5-api-xem-chi-tiết-học-liệu)
 - [6. API bắt đầu khoá học](#6-api-bắt-đầu-khoá-học)
+- [7. API lấy mã lớp của sinh viên](#7-api-lấy-mã-lớp-của-sinh-viên)
+- [8. API lấy mã khoa của sinh viên](#8-api-lấy-mã-khoa-của-sinh-viên)
+- [9. API tìm kiếm học liệu của màn ghi chú](#9-api-tìm-kiếm-học-liệu-của-màn-ghi-chú)
+- [10. API chi tiết khoá học](#10-api-chi-tiết-khoá-học)
+- [11. API cập nhật thông tin cá nhân của quản trị](#11-api-cập-nhật-thông-tin-cá-nhân-của-quản-trị)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -303,3 +308,171 @@ curl -X 'GET' \
   -H 'accept: */*' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCJdLCJuYW1lIjoiZWR4MTIzIiwiaXNTdXBlclVzZXIiOnRydWUsImlkIjo0LCJwb3NpdGlvbiI6ImlzX3F0Y3MiLCJlbWFpbCI6ImVkeEBleGFtcGxlLmNvbSIsImV4cCI6MTcyNDgxMTEyMywiaWF0IjoxNzI0NzI0NzIzfQ.BTZTeDgSxEj5Ri23YeEutQGz2aqun-orumbJCyZYw1c'
 ```
+
+# 7. API lấy mã lớp của sinh viên
+
+> ngày cập nhật: 06/09/2024
+
+> nội dung thay đổi
+
+* thêm mới api lấy mã khoa của sinh viên
+
+> api
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/my-registration/get-student-class-filter' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjU2ODQ2MzMsImlhdCI6MTcyNTU5ODIzM30.Xr7bufz9VF2NRavCJAlKMCaZ1n8IP6KKaYUrSY-lwc4'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "khanhalo",
+      "id": 18
+    },
+    {
+      "name": "lớp học",
+      "id": 22
+    },
+    {
+      "name": "Lớp 1",
+      "id": 23
+    },
+    {
+      "name": "Course 3",
+      "id": 3
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 8. API lấy mã khoa của sinh viên
+
+> ngày cập nhật: 06/09/2024
+
+> nội dung
+
+* api lấy mã khoa của sinh viên (dùng cho bộ lọc cho phần thống kê biểu đồ của màn sinh viên)
+
+> api
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/my-registration/get-industry-group-filter' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjU2ODQ2MzMsImlhdCI6MTcyNTU5ODIzM30.Xr7bufz9VF2NRavCJAlKMCaZ1n8IP6KKaYUrSY-lwc4'
+```
+
+
+> response
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "Năng khiếu Mỹ thuật ứng dụng",
+      "id": 6
+    },
+    {
+      "name": "Năng khiếu Trình diễn",
+      "id": 4
+    },
+    {
+      "name": "Năng khiếu Mỹ thuật",
+      "id": 3
+    },
+    {
+      "name": "Khoa học giáo dục",
+      "id": 1
+    },
+    {
+      "name": "Đào tạo giáo viên sư phạm",
+      "id": 2
+    },
+    {
+      "name": "Năng khiếu Nghe nhìn",
+      "id": 5
+    },
+    {
+      "name": "Ngôn ngữ, Văn học và Văn hóa nước ngoài",
+      "id": 8
+    },
+    {
+      "name": "Ngôn ngữ, Văn học và Văn hóa Việt Nam",
+      "id": 7
+    },
+    {
+      "name": "Xã hội học và nhân học",
+      "id": 11
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 9. API tìm kiếm học liệu của màn ghi chú
+
+> ngày cập nhật: 06/09/2024
+
+> màn hình tương ứng (UC907 - phần lọc học liệu theo bài giảng)
+
+```json
+https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=304-142491&node-type=CANVAS&t=HJEykxqXB1hEuWBd-0
+```
+
+> nội dung thay đổi
+
+* ở màn này, không lọc ra các học liệu quiz do không thể ghi chú cho loại học liệu này
+
+* thêm vào cuối endpoint "includingQuiz=false"
+
+> api
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/mooc-course-unit/get-by-sequence/589?includingQuiz=false' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjU2ODQ2MzMsImlhdCI6MTcyNTU5ODIzM30.Xr7bufz9VF2NRavCJAlKMCaZ1n8IP6KKaYUrSY-lwc4'
+```
+
+# 10. API chi tiết khoá học
+
+> ngày cập nhật: 06/09/2024
+
+> Thay đổi trong màn hình trình bày giao diện khoá học (UC890)
+
+```json
+https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=63-57758&node-type=CANVAS&t=HJEykxqXB1hEuWBd-0
+```
+
+> nội dung thay đổi của màn trình bày giao diện khoá học (UC890)
+
+* Phần trình giao diện khoá học, phần lộ trình: check học liệu, => có key isFree = true => bỏ khoá, kể cả isAccessible = false. Do đây là giao diện trình bày khoá học => học liệu miễn phí sẽ không bị khoá.
+
+* Nếu isFree = false && isAccessible = false => khoá học liệu
+
+* Note: chỉ thay đổi trong màn giao diện khoá học => màn cấu trúc khoá học (sau khi chọn 1 khoá từ màn khoá học của tôi) => không thay đổi
+
+# 11. API cập nhật thông tin cá nhân của quản trị
+
+> ngày cập nhật: 06/09/2024
+
+> Màn hình thay đổi: (UC885)
+
+```json
+https://www.figma.com/design/untUrfdnnOhMEfKY2rCsVC/INNO-(QT)?node-id=1141-6135&node-type=CANVAS&t=HJEykxqXB1hEuWBd-0
+```
+
+> Nội dung thay đổi
+
+* Khi cập nhật trình độ học vấn của giảng viên, chỉ truyền duy nhất 1 loại trình độ học vấn lên (có thể truyền mảng có tối đa 1 phần tử)
+
+
