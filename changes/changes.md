@@ -457,9 +457,244 @@ https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=63-57758&n
 
 * Phần trình giao diện khoá học, phần lộ trình: check học liệu, => có key isFree = true => bỏ khoá, kể cả isAccessible = false. Do đây là giao diện trình bày khoá học => học liệu miễn phí sẽ không bị khoá.
 
-* Nếu isFree = false && isAccessible = false => khoá học liệu
-
 * Note: chỉ thay đổi trong màn giao diện khoá học => màn cấu trúc khoá học (sau khi chọn 1 khoá từ màn khoá học của tôi) => không thay đổi
+
+> api
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 459,
+    "name": "test chia sẻ",
+    "code": "share01",
+    "description": null,
+    "image": null,
+    "template": null,
+    "title": null,
+    "courseUrl": "https://moooc.xyz/courses/share01",
+    "createdDate": "2024-09-04T10:50:39Z",
+    "totalStudents": 1,
+    "publicDate": "2024-09-04T07:09:20.351997Z",
+    "industries": [
+      {
+        "id": 4,
+        "name": "Kinh tế Giáo dục",
+        "code": "7140199",
+        "industryGroupCode": "71401",
+        "status": true
+      }
+    ],
+    "cost": 0,
+    "assigners": [
+      {
+        "uuid": "84b44910479d4f5486c8a44f4b37ccd7",
+        "name": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+        "slug": "NEU",
+        "isSponsor": false
+      },
+      {
+        "uuid": "84b44910479d4f5486c8a44f4b37cc10",
+        "name": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "slug": "HANU",
+        "isSponsor": true
+      }
+    ],
+    "sections": [
+      {
+        "id": 1145,
+        "name": "Chương 1",
+        "orderNumber": 1,
+        "scheduleStartDate": null,
+        "scheduleEndDate": null,
+        "children": [
+          {
+            "id": 1643,
+            "name": "Mở bài",
+            "courseTeacherUserId": 4,
+            "courseTeacherUserName": null,
+            "orderNumber": 1,
+            "sectionId": 1145,
+            "children": [
+              {
+                "id": 3278,
+                "name": "Bài kiểm tra số 1",
+                "orderNumber": null,
+                "block": [
+                  {
+                    "id": 1460,
+                    "module": "quiz",
+                    "orderNumber": null,
+                    "iconType": 3,
+                    "title": "Bài kiểm tra số 1",
+                    "description": null,
+                    "referenceType": null
+                  }
+                ],
+                "timeCompletedCondition": null,
+                "sequenceId": 1643,
+                "isCompleted": false,
+                "totalTime": 240,
+                "totalDiscussion": 0,
+                "availableStatus": 2,
+                "createdDate": "2024-09-04T03:52:13Z",
+                "isFree": true, // => không khoá
+                "lockedReason": null,
+                "isRegisteredCourse": false,
+                "isAccessible": false
+              },
+              {
+                "id": 3277,
+                "name": "Video điểm danh 01",
+                "orderNumber": 1,
+                "block": [
+                  {
+                    "id": 1459,
+                    "module": "video",
+                    "orderNumber": null,
+                    "iconType": 1,
+                    "title": "Video điểm danh 01",
+                    "description": null,
+                    "referenceType": null
+                  }
+                ],
+                "timeCompletedCondition": 0,
+                "sequenceId": 1643,
+                "isCompleted": false,
+                "totalTime": 0,
+                "totalDiscussion": 0,
+                "availableStatus": 2,
+                "createdDate": "2024-09-04T03:52:01Z",
+                "isFree": true,
+                "lockedReason": null,
+                "isRegisteredCourse": false,
+                "isAccessible": false
+              },
+              {
+                "id": 3280,
+                "name": "em tùng test",
+                "orderNumber": 2,
+                "block": [
+                  {
+                    "id": 1462,
+                    "module": "scorm",
+                    "orderNumber": null,
+                    "iconType": 1,
+                    "title": "em tùng test",
+                    "description": null,
+                    "referenceType": null
+                  }
+                ],
+                "timeCompletedCondition": 0,
+                "sequenceId": 1643,
+                "isCompleted": false,
+                "totalTime": 0,
+                "totalDiscussion": 0,
+                "availableStatus": null,
+                "createdDate": "2024-09-04T10:14:49Z",
+                "isFree": true,
+                "lockedReason": null,
+                "isRegisteredCourse": false,
+                "isAccessible": false
+              },
+              {
+                "id": 3281,
+                "name": "em tùng test",
+                "orderNumber": 3,
+                "block": [
+                  {
+                    "id": 1463,
+                    "module": "scorm",
+                    "orderNumber": null,
+                    "iconType": 1,
+                    "title": "em tùng test",
+                    "description": null,
+                    "referenceType": null
+                  }
+                ],
+                "timeCompletedCondition": 0,
+                "sequenceId": 1643,
+                "isCompleted": false,
+                "totalTime": 0,
+                "totalDiscussion": 0,
+                "availableStatus": null,
+                "createdDate": "2024-09-04T10:47:59Z",
+                "isFree": true,
+                "lockedReason": null,
+                "isRegisteredCourse": false,
+                "isAccessible": false
+              },
+              {
+                "id": 3282,
+                "name": "sc",
+                "orderNumber": 4,
+                "block": [
+                  {
+                    "id": 1464,
+                    "module": "scorm",
+                    "orderNumber": null,
+                    "iconType": 1,
+                    "title": "sc",
+                    "description": null,
+                    "referenceType": null
+                  }
+                ],
+                "timeCompletedCondition": 0,
+                "sequenceId": 1643,
+                "isCompleted": false,
+                "totalTime": 0,
+                "totalDiscussion": 0,
+                "availableStatus": null,
+                "createdDate": "2024-09-04T10:48:41Z",
+                "isFree": true,
+                "lockedReason": null,
+                "isRegisteredCourse": false,
+                "isAccessible": false
+              },
+              {
+                "id": 3283,
+                "name": "em tùng test",
+                "orderNumber": 5,
+                "block": [
+                  {
+                    "id": 1465,
+                    "module": "xapi",
+                    "orderNumber": null,
+                    "iconType": 1,
+                    "title": "em tùng test",
+                    "description": null,
+                    "referenceType": null
+                  }
+                ],
+                "timeCompletedCondition": 0,
+                "sequenceId": 1643,
+                "isCompleted": false,
+                "totalTime": 0,
+                "totalDiscussion": 0,
+                "availableStatus": null,
+                "createdDate": "2024-09-04T10:49:17Z",
+                "isFree": true,
+                "lockedReason": null,
+                "isRegisteredCourse": false,
+                "isAccessible": false
+              }
+            ],
+            "completedPercentage": 0,
+            "videoNumber": 1,
+            "totalTime": 240,
+            "totalUnit": 6
+          }
+        ],
+        "completedPercentage": 0,
+        "videoNumber": 1,
+        "totalTime": 240,
+        "totalUnit": 6
+      }
+    ]
+  },
+  "message": "Thực hiện thành công"
+}
+```
 
 # 11. API cập nhật thông tin cá nhân của quản trị
 
@@ -475,4 +710,13 @@ https://www.figma.com/design/untUrfdnnOhMEfKY2rCsVC/INNO-(QT)?node-id=1141-6135&
 
 * Khi cập nhật trình độ học vấn của giảng viên, chỉ truyền duy nhất 1 loại trình độ học vấn lên (có thể truyền mảng có tối đa 1 phần tử)
 
+> api
 
+```json
+curl -X 'PUT' \
+  'https://be.moooc.xyz/v2/api/account/update-profile' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjU2ODQ2MzMsImlhdCI6MTcyNTU5ODIzM30.Xr7bufz9VF2NRavCJAlKMCaZ1n8IP6KKaYUrSY-lwc4' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'academicLevelIds=1'
+```
