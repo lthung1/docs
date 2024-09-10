@@ -10,6 +10,7 @@
 - [9. API tìm kiếm học liệu của màn ghi chú](#9-api-tìm-kiếm-học-liệu-của-màn-ghi-chú)
 - [10. API chi tiết khoá học](#10-api-chi-tiết-khoá-học)
 - [11. API cập nhật thông tin cá nhân của quản trị](#11-api-cập-nhật-thông-tin-cá-nhân-của-quản-trị)
+- [12. API tìm kiếm bài tập, bài kiểm tra, bài thi](#12-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -719,4 +720,189 @@ curl -X 'PUT' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjU2ODQ2MzMsImlhdCI6MTcyNTU5ODIzM30.Xr7bufz9VF2NRavCJAlKMCaZ1n8IP6KKaYUrSY-lwc4' \
   -H 'Content-Type: multipart/form-data' \
   -F 'academicLevelIds=1'
+```
+
+# 12. API tìm kiếm bài tập, bài kiểm tra, bài thi
+
+> ngày cập nhật: 10/09/2024
+
+> Màn hình cập nhật: (UC915)
+
+```json
+https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=2286-216260&node-type=canvas&t=2o7kkVgXWvuBSgYr-0
+```
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/course/structure/exam/search/3' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjYwNDE0MjksImlhdCI6MTcyNTk1NTAyOX0.yopw5wGXDvsyiUd51xGVR0P9ZHxq71oxallESYCbnl0' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  
+}'
+```
+
+> payload
+
+```json
+{
+    "status": 1,
+    => trạng thái
+    + Tất cả: 0
+    + Đã làm: 1
+    + Chưa làm: 2
+    + Sắp đến hạn nộp: 3
+
+    "submitDateFrom": "2023-09-04T17:00:00.000Z",
+    "submitDateTo": "2024-10-25T17:00:00.000Z",
+    => Thời gian
+
+    "resultStatus": 1,
+    => Kết quả
+    + Đạt: 1
+    + Chưa đạt: 0
+    + Chưa có kết quả: -1
+    + Tất cả: null
+    (không còn option "Khác" như trên design)
+
+    "submitTime": 6,
+    => Số lần nộp
+
+    "type": 1,
+    => tab (tất cả, bài tập, bài kiểm tra, bài thi)
+    + Tất cả: null
+    + Bài tập: 1
+    + Bài kiểm tra: 2
+    + Bài thi: 3
+
+    "page": 1,
+    "size": 10
+}
+```
+
+> response
+
+```json
+{
+    "success": true,
+    "data": {
+        "exams": [
+            {
+                "id": 502, // blockId
+                "examType": 1, // loại bài (tương ứng với "type" ở payload)
+                "name": "bài tập 1", // tên bài
+                "totalQuestions": 2, // tổng câu hỏi
+                "duration": 300, // tổng thời lượng (theo giây)
+                "dateToCompleteBefore": "2024-09-29T00:00:00Z", 
+                // Hoàn thành trước => nếu null thì hiện "--"
+                "submitDate": "2024-08-27T08:22:28Z", 
+                // Thời gian nộp => nếu null thì hiện "--"
+                "submitTime": 6, // Số lần nộp
+                "allowedSubmitTime": null, // số lần nộp tối đa cho phép
+                "resultStatus": 1, // bỏ qua
+                "unitId": 1719, 
+                "sequenceId": 592,
+                "sectionId": 368,
+                "blockId": 502,
+                "point": null, // bỏ qua
+                "result": "2.0", // kết quả (trả về String) => null = "--"
+                "isSuccess": false,
+                "overdue": false, // quá hạn
+                "isRequired": true // bắt buộc 
+            },
+            {
+                "id": 507,
+                "examType": 2,
+                "name": "bài kiểm tra 1",
+                "totalQuestions": 2,
+                "duration": null,
+                "dateToCompleteBefore": "2024-09-30T00:00:00Z",
+                "submitDate": "2024-08-23T18:42:17Z",
+                "submitTime": 1,
+                "allowedSubmitTime": null,
+                "resultStatus": -1,
+                "unitId": 1724,
+                "sequenceId": 592,
+                "sectionId": 368,
+                "blockId": 507,
+                "point": null,
+                "result": null,
+                "isSuccess": false,
+                "overdue": false,
+                "isRequired": false
+            },
+            {
+                "id": 559,
+                "examType": 1,
+                "name": "BT 01",
+                "totalQuestions": 4,
+                "duration": null,
+                "dateToCompleteBefore": "2024-09-30T00:00:00Z",
+                "submitDate": "2024-08-23T18:46:06Z",
+                "submitTime": 1,
+                "allowedSubmitTime": null,
+                "resultStatus": -1,
+                "unitId": 1824,
+                "sequenceId": 640,
+                "sectionId": 427,
+                "blockId": 559,
+                "point": null,
+                "result": null,
+                "isSuccess": false,
+                "overdue": false,
+                "isRequired": false
+            },
+            {
+                "id": 560,
+                "examType": 1,
+                "name": "Câu hỏi không bắt buộc",
+                "totalQuestions": 3,
+                "duration": null,
+                "dateToCompleteBefore": "2024-09-30T00:00:00Z",
+                "submitDate": "2024-08-22T04:20:37Z",
+                "submitTime": 1,
+                "allowedSubmitTime": null,
+                "resultStatus": -1,
+                "unitId": 1825,
+                "sequenceId": 640,
+                "sectionId": 427,
+                "blockId": 560,
+                "point": null,
+                "result": null,
+                "isSuccess": false,
+                "overdue": false,
+                "isRequired": false
+            },
+            {
+                "id": 666,
+                "examType": 1,
+                "name": "Bài tập 2",
+                "totalQuestions": 2,
+                "duration": null,
+                "dateToCompleteBefore": "2024-09-30T00:00:00Z",
+                "submitDate": "2024-09-09T09:51:41Z",
+                "submitTime": 1,
+                "allowedSubmitTime": null,
+                "resultStatus": -1,
+                "unitId": 1950,
+                "sequenceId": 640,
+                "sectionId": 427,
+                "blockId": 666,
+                "point": null,
+                "result": null,
+                "isSuccess": false,
+                "overdue": false,
+                "isRequired": false
+            }
+        ],
+        "totalNumber": 5, // tất cả
+        "testNumber": 1, // bài kiểm tra
+        "exerciseNumber": 4, // bài tập
+        "examNumber": 0 // bài thi
+    },
+    "message": "Thực hiện thành công"
+}
 ```
