@@ -20,6 +20,10 @@
 - [19. Số lượt xem tài nguyên](#19-Số-lượt-xem-tài-nguyên)
 - [20. Số lượt chia sẻ tài nguyên](#20-Số-lượt-chia-sẻ-tài-nguyên)
 - [21. Số lượt tải xuống tài nguyên](#21-Số-lượt-tải-xuống-tài-nguyên)
+- [22. Tổng hợp số liệu](#22-Tổng-hợp-số-liệu)
+- [23. Số lượt truy cập và số người truy cập](#23-Số-lượt-truy-cập-và-số-người-truy-cập)
+- [24. Đối tượng truy cập](#24-Đối-tượng-truy-cập)
+
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -1419,3 +1423,146 @@ curl -X 'POST' \
 # 21. Số lượt tải xuống tài nguyên
 
 * tương tự số lượt xem tài nguyên => unitActionType = 3
+
+# 22. Tổng hợp số liệu
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-synthesize-data-university' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjYxMDg1ODEsImlhdCI6MTcyNjAyMjE4MX0.8F9snW7CsH2jkIHaUJ8c85P3Hv-zajKwpKllPufLmqk' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": null,
+      "criteria": "Lượt truy cập",
+      "count": 7,
+      "percentage": "Infinity"
+    },
+    {
+      "type": null,
+      "criteria": "Giảng viên",
+      "count": 52,
+      "percentage": 216.66667
+    },
+    {
+      "type": null,
+      "criteria": "Sinh viên",
+      "count": 212,
+      "percentage": 460.86954
+    },
+    {
+      "type": null,
+      "criteria": "Khóa học",
+      "count": 102,
+      "percentage": 43.96552
+    },
+    {
+      "type": null,
+      "criteria": "Tài nguyên",
+      "count": 1998,
+      "percentage": 34.004025
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 23. Số lượt truy cập và số người truy cập
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-visits-and-visitors' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjYxMDg1ODEsImlhdCI6MTcyNjAyMjE4MX0.8F9snW7CsH2jkIHaUJ8c85P3Hv-zajKwpKllPufLmqk' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "2024-09-10 00:00:00.0",
+        "values": [
+          {
+            "count": 7,
+            "percentage": null,
+            "criteria": "Số lượt truy cập"
+          },
+          {
+            "count": 3,
+            "percentage": null,
+            "criteria": "Số người truy cập"
+          }
+        ]
+      }
+    ],
+    "total": 0,
+    "subTotal": []
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 24. Đối tượng truy cập
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-visits-and-visitors-by-register' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjYxMDg1ODEsImlhdCI6MTcyNjAyMjE4MX0.8F9snW7CsH2jkIHaUJ8c85P3Hv-zajKwpKllPufLmqk' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "Vãng lai",
+        "values": [
+          {
+            "count": 3,
+            "percentage": null,
+            "criteria": "Số lượt truy cập"
+          },
+          {
+            "count": 2,
+            "percentage": null,
+            "criteria": "Số người truy cập"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "Trường đăng ký",
+        "values": [
+          {
+            "count": 4,
+            "percentage": null,
+            "criteria": "Số lượt truy cập"
+          },
+          {
+            "count": 1,
+            "percentage": null,
+            "criteria": "Số người truy cập"
+          }
+        ]
+      }
+    ],
+    "total": 0,
+    "subTotal": []
+  },
+  "message": "Thực hiện thành công"
+}
+```
