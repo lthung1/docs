@@ -10,7 +10,7 @@
 - [9. Api số lượng Scorm & xAPI](#9-số-lượng-Scorm-&-xAPI)
 - [10. Api số lượng học liệu đa phương tiện](#10-số-lượng-học-liệu-đa-phương-tiện)
 - [11. Api Số lượng phản hồi theo thời gian](#11-Số-lượng-phản-hồi-theo-thời-gian)
-- [12. Api Số lượng phản hồi theo khóa học](#12-Số-lượng-phản-hồi-theo-khóa-học)
+- [12. Api Số lượng phản hồi theo bài giảng](#12-Số-lượng-phản-hồi-theo-bài-giảng)
 - [13. Api Số lượt đánh giá vs số lượng hoàn thành học liệu](#13-Số-lượt-đánh-giá-vs-số-lượng-hoàn-thành-học-liệu)
 - [14. Api Tỷ lệ đánh giá học liệu theo phân loại](#14-Tỷ-lệ-đánh-giá-học-liệu-theo-phân-loại)
 - [15. Api Tỷ lệ đánh giá khóa học](#15-Tỷ-lệ-đánh-giá-khóa-học)
@@ -976,10 +976,10 @@ curl -X 'POST' \
   "message": "Thực hiện thành công"
 }
 ```
-# 12. Số lượng phản hồi theo khóa học
+# 12. Số lượng phản hồi theo bài giảng
 ```json
 curl -X 'POST' \
-  'http://localhost:8080/api/chart-admin/get-discuss-course-action' \
+  'http://localhost:8080/api/chart-admin/get-discuss-by-sequence' \
   -H 'accept: */*' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19xdGNzIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjU5MzMxNzMsImlhdCI6MTcyNTg0Njc3M30.sfPlQSEs6EOp2qYWFjrUGCZeTMVbBm_sh0bYebX3iIQ' \
   -H 'Content-Type: application/json' \
