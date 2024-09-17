@@ -23,6 +23,9 @@
 - [22. Tổng hợp số liệu](#22-Tổng-hợp-số-liệu)
 - [23. Số lượt truy cập và số người truy cập](#23-Số-lượt-truy-cập-và-số-người-truy-cập)
 - [24. Đối tượng truy cập](#24-Đối-tượng-truy-cập)
+- [25. Số lượng giảng viên](#25-Số-lượng-giảng-viên)
+- [26. Số lượng học viên](#26-Số-lượng-học-viên)
+- [27. Số lượng tài nguyên](#27-Số-lượng-tài-nguyên)
 
 
 # 0. Một số chú thích ban đầu
@@ -1562,6 +1565,185 @@ curl -X 'POST' \
     ],
     "total": 0,
     "subTotal": []
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 25. Số lượng giảng viên
+```json
+curl -X 'POST' \
+  curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-teacher-by-university' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19naWFuZ192aWVuIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjY1NjIxODYsImlhdCI6MTcyNjQ3NTc4Nn0.n-CBb3rAnCQGcCdGw6m92Q52BWNIijqgSsxVdSClt-A' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+        "values": [
+          {
+            "count": 1,
+            "percentage": null,
+            "criteria": "Khác"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "Khác",
+        "values": [
+          {
+            "count": 6,
+            "percentage": null,
+            "criteria": "Cử nhân"
+          },
+          {
+            "count": 12,
+            "percentage": null,
+            "criteria": "Khác"
+          },
+          {
+            "count": 4,
+            "percentage": null,
+            "criteria": "Tiến sĩ"
+          },
+          {
+            "count": 3,
+            "percentage": null,
+            "criteria": "Thạc sĩ"
+          }
+        ]
+      }
+    ],
+    "total": 53,
+    "subTotal": []
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 26. Số lượng học viên
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-student-by-university' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19naWFuZ192aWVuIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjY1NjIxODYsImlhdCI6MTcyNjQ3NTc4Nn0.n-CBb3rAnCQGcCdGw6m92Q52BWNIijqgSsxVdSClt-A' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": {
+    "statistic": [
+      {
+        "type": null,
+        "criteria": "TRƯỜNG ĐẠI HỌC HÀ NỘI",
+        "values": [
+          {
+            "count": 1,
+            "percentage": null,
+            "criteria": "Học viên đăng ký mới"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "ĐẠI HỌC BÁCH KHOA HÀ NỘI",
+        "values": [
+          {
+            "count": 3,
+            "percentage": null,
+            "criteria": "Học viên đăng ký mới"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "ĐẠI HỌC QUỐC GIA HÀ NỘI",
+        "values": [
+          {
+            "count": 1,
+            "percentage": null,
+            "criteria": "Học viên đăng ký mới"
+          }
+        ]
+      },
+      {
+        "type": null,
+        "criteria": "Khác",
+        "values": [
+          {
+            "count": 102,
+            "percentage": null,
+            "criteria": "Học viên đăng ký mới"
+          },
+          {
+            "count": 28,
+            "percentage": null,
+            "criteria": "Học viên cũ"
+          }
+        ]
+      }
+    ],
+    "total": 53,
+    "subTotal": []
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 27. Số lượng tài nguyên
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-unit-resources' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiUVRIVCIsInBoYW4gcXV5ZW4gZGVmYXVsdCIsIlRlc3QgMTIzNDUiXSwibmFtZSI6ImVkeDEyMyIsImlzU3VwZXJVc2VyIjp0cnVlLCJpZCI6NCwicG9zaXRpb24iOiJpc19naWFuZ192aWVuIiwiZW1haWwiOiJlZHhAZXhhbXBsZS5jb20iLCJleHAiOjE3MjY1NjIxODYsImlhdCI6MTcyNjQ3NTc4Nn0.n-CBb3rAnCQGcCdGw6m92Q52BWNIijqgSsxVdSClt-A' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": {
+    "total": null,
+    "statistic": [
+      {
+        "type": 1,
+        "criteria": "Tài liệu tham khảo",
+        "count": 5,
+        "percentage": null
+      },
+      {
+        "type": 2,
+        "criteria": "Scorm & xAPI",
+        "count": 10,
+        "percentage": null
+      },
+      {
+        "type": 3,
+        "criteria": "Bài kiểm tra",
+        "count": 87,
+        "percentage": null
+      },
+      {
+        "type": 4,
+        "criteria": "Đa phương tiện",
+        "count": 88,
+        "percentage": null
+      }
+    ]
   },
   "message": "Thực hiện thành công"
 }
