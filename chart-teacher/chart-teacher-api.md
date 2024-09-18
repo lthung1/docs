@@ -22,6 +22,8 @@
 - [19. Số lượng tìm kiếm theo từ khoá](#19-số-lượng-tìm-kiếm-theo-từ-khoá)
 - [20. Thống kê số lượng phản hồi](#20-thống-kê-số-lượng-phản-hồi)
 - [21. Thống kê đánh giá theo Bài kiểm tra cho Lớp ghi danh](#20-Thống-kê-đánh-giá-theo-Bài-kiểm-tra-cho-Lớp-ghi-danh)
+- [22. Tổng hợp dữ liệu tab tổng quan](#22-Tổng-hợp-dữ-liệu-tab-tổng-quan)
+- [23. Tổng hợp dữ liệu tab tài nguyên](#23-Tổng-hợp-dữ-liệu-tab-tài-nguyên)
 
 # 0. Một số chú thích ban đầu
 > giải thích payload bộ lọc chung
@@ -1495,6 +1497,114 @@ curl -X 'POST' \
     "total": 0,
     "subTotal": []
   },
+  "message": "Thực hiện thành công"
+}
+```
+# 22. Tổng hợp dữ liệu tab tổng quan
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-university/get-synthesize-data-university' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJHaeG6o25nIHZpw6puIiwiUXXhuqNuIHRy4buLIGtow7NhIGjhu41jIDIiLCJRdeG6o24gdHLhu4sgaOG7hyB0aOG7kW5nIl0sIm5hbWUiOiJob25ndnQubmtnK3F0aHRAZ21haWwuY29tIiwiaXNTdXBlclVzZXIiOmZhbHNlLCJpZCI6MjQ1LCJwb3NpdGlvbiI6ImlzX3F0aHQiLCJlbWFpbCI6Imhvbmd2dC5ua2crcXRodEBnbWFpbC5jb20iLCJleHAiOjE3MjY2MzQ0NTMsImlhdCI6MTcyNjU0ODA1M30.cGouR0CJipNRZmJLrEzntOOmJYj_IQhAl39aqMLm3dQ' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": null,
+      "criteria": "Lượt truy cập",
+      "count": 0,
+      "percentage": 0
+    },
+    {
+      "type": null,
+      "criteria": "Trường liên kết",
+      "count": 11,
+      "percentage": -166.66666
+    },
+    {
+      "type": null,
+      "criteria": "Giảng viên",
+      "count": 52,
+      "percentage": 50
+    },
+    {
+      "type": null,
+      "criteria": "Sinh viên",
+      "count": 214,
+      "percentage": 73.83177
+    },
+    {
+      "type": null,
+      "criteria": "Khóa học",
+      "count": 106,
+      "percentage": -118.86792
+    },
+    {
+      "type": null,
+      "criteria": "Tài nguyên",
+      "count": 2002,
+      "percentage": -191.78082
+    }
+  ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 23. Tổng hợp dữ liệu tab tài nguyên
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-university/get-synthesize-course-university' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJHaeG6o25nIHZpw6puIiwiUXXhuqNuIHRy4buLIGtow7NhIGjhu41jIDIiLCJRdeG6o24gdHLhu4sgaOG7hyB0aOG7kW5nIl0sIm5hbWUiOiJob25ndnQubmtnK3F0aHRAZ21haWwuY29tIiwiaXNTdXBlclVzZXIiOmZhbHNlLCJpZCI6MjQ1LCJwb3NpdGlvbiI6ImlzX3F0aHQiLCJlbWFpbCI6Imhvbmd2dC5ua2crcXRodEBnbWFpbC5jb20iLCJleHAiOjE3MjY2MzQ0NTMsImlhdCI6MTcyNjU0ODA1M30.cGouR0CJipNRZmJLrEzntOOmJYj_IQhAl39aqMLm3dQ' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+}'
+```
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": null,
+      "criteria": "Khóa học",
+      "count": 106,
+      "percentage": -118.86792
+    },
+    {
+      "type": null,
+      "criteria": "Tài nguyên",
+      "count": 2002,
+      "percentage": -191.78082
+    },
+    {
+      "type": null,
+      "criteria": "Bài kiểm tra",
+      "count": 2002,
+      "percentage": -191.78082
+    },
+    {
+      "type": null,
+      "criteria": "SCORM & xAPI",
+      "count": 75,
+      "percentage": -77.77778
+    },
+    {
+      "type": null,
+      "criteria": "Đa phương tiện",
+      "count": 212,
+      "percentage": 18.80342
+    },
+    {
+      "type": null,
+      "criteria": "Tài liệu tham khảo",
+      "count": 36,
+      "percentage": 56
+    }
+  ],
   "message": "Thực hiện thành công"
 }
 ```

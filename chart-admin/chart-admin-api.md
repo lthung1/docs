@@ -20,12 +20,13 @@
 - [19. Số lượt xem tài nguyên](#19-Số-lượt-xem-tài-nguyên)
 - [20. Số lượt chia sẻ tài nguyên](#20-Số-lượt-chia-sẻ-tài-nguyên)
 - [21. Số lượt tải xuống tài nguyên](#21-Số-lượt-tải-xuống-tài-nguyên)
-- [22. Tổng hợp số liệu](#22-Tổng-hợp-số-liệu)
+- [22. Tổng hợp số liệu tab tổng quan](#22-Tổng-hợp-số-liệu-tab-tổng-quan)
 - [23. Số lượt truy cập và số người truy cập](#23-Số-lượt-truy-cập-và-số-người-truy-cập)
 - [24. Đối tượng truy cập](#24-Đối-tượng-truy-cập)
 - [25. Số lượng giảng viên](#25-Số-lượng-giảng-viên)
 - [26. Số lượng học viên](#26-Số-lượng-học-viên)
 - [27. Số lượng tài nguyên](#27-Số-lượng-tài-nguyên)
+- [28. Tổng hợp dữ liệu tab tài nguyên](#28-Tổng-hợp-dữ-liệu-tab-tài-nguyên)
 
 
 # 0. Một số chú thích ban đầu
@@ -1436,7 +1437,7 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
 ```
-> out put
+> out put 
 ```json
 {
   "success": true,
@@ -1745,6 +1746,61 @@ curl -X 'POST' \
       }
     ]
   },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 28. Tổng hợp dữ liệu tab tài nguyên
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/chart-admin/get-synthesize-course-university' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJHaeG6o25nIHZpw6puIiwiUXXhuqNuIHRy4buLIGtow7NhIGjhu41jIDIiLCJRdeG6o24gdHLhu4sgaOG7hyB0aOG7kW5nIl0sIm5hbWUiOiJob25ndnQubmtnK3F0aHRAZ21haWwuY29tIiwiaXNTdXBlclVzZXIiOmZhbHNlLCJpZCI6MjQ1LCJwb3NpdGlvbiI6ImlzX3F0aHQiLCJlbWFpbCI6Imhvbmd2dC5ua2crcXRodEBnbWFpbC5jb20iLCJleHAiOjE3MjY2MzQ0NTMsImlhdCI6MTcyNjU0ODA1M30.cGouR0CJipNRZmJLrEzntOOmJYj_IQhAl39aqMLm3dQ' \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"2024-06-11T02:35:17.413Z","to":"2024-09-11T02:35:17.413Z","courseLevelIds":[],"industryGroupIds":[],"courseIds":[],"timeUnit":"month"}'
+```
+> out put
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "type": null,
+      "criteria": "Khóa học",
+      "count": 106,
+      "percentage": -118.86792
+    },
+    {
+      "type": null,
+      "criteria": "Tài nguyên",
+      "count": 2002,
+      "percentage": -191.78082
+    },
+    {
+      "type": null,
+      "criteria": "Bài kiểm tra",
+      "count": 2002,
+      "percentage": -191.78082
+    },
+    {
+      "type": null,
+      "criteria": "SCORM & xAPI",
+      "count": 75,
+      "percentage": -77.77778
+    },
+    {
+      "type": null,
+      "criteria": "Đa phương tiện",
+      "count": 212,
+      "percentage": 18.80342
+    },
+    {
+      "type": null,
+      "criteria": "Tài liệu tham khảo",
+      "count": 36,
+      "percentage": 56
+    }
+  ],
   "message": "Thực hiện thành công"
 }
 ```
