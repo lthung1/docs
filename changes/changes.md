@@ -11,6 +11,8 @@
 - [10. API chi tiết khoá học](#10-api-chi-tiết-khoá-học)
 - [11. API cập nhật thông tin cá nhân của quản trị](#11-api-cập-nhật-thông-tin-cá-nhân-của-quản-trị)
 - [12. API tìm kiếm bài tập, bài kiểm tra, bài thi](#12-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
+- [13. API tìm kiếm bài tập, bài kiểm tra, bài thi](#13-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
+- [14. API lịch](#14-API-lịch)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -904,5 +906,181 @@ curl -X 'POST' \
         "examNumber": 0 // bài thi
     },
     "message": "Thực hiện thành công"
+}
+```
+
+# 13. API tìm kiếm bài tập, bài kiểm tra, bài thi
+
+> ngày cập nhật : 26/09/2024
+
+> màn hình: UC914
+
+```json
+https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=2286-216260&node-type=canvas&t=XUmPfBjxjJDPDWWP-0
+```
+
+> Nội dung thay đổi
+
+* Các bài không thể truy cập sẽ điều hướng tới màn cấu trúc khoá học (căn cứ theo field isAccessible)
+
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/course/structure/exam/search/3' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W10sIm5hbWUiOiJubGg0NjMxNSIsImlzU3VwZXJVc2VyIjpmYWxzZSwiaWQiOjQyNCwicG9zaXRpb24iOiJpc19zdiIsImVtYWlsIjoibmxoNDYzMTVAbm93bmkuY29tIiwiZXhwIjoxNzI3NDA0ODE3LCJpYXQiOjE3MjczMTg0MTd9.ZWJzFeqKNiD3HN2DfwN40QgxdxajBfLswMX9xeV24mA' \
+  -H 'Content-Type: application/json' \
+  -d '{
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "exams": [
+      {
+        "id": 902,
+        "examType": 1,
+        "name": "Bài tập",
+        "totalQuestions": 2,
+        "duration": null,
+        "dateToCompleteBefore": "2024-09-29T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": null,
+        "resultStatus": -1,
+        "unitId": 2361,
+        "sequenceId": 1178,
+        "sectionId": 846,
+        "blockId": 902,
+        "point": null,
+        "result": null,
+        "isSuccess": false,
+        "overdue": false,
+        "isRequired": false,
+        "isAccessible": true // nếu false thì điều hướng tới cấu trúc khoá học
+      },
+      {
+        "id": 903,
+        "examType": 2,
+        "name": "Bài kiểm tra ",
+        "totalQuestions": 3,
+        "duration": null,
+        "dateToCompleteBefore": "2024-07-31T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": null,
+        "resultStatus": -1,
+        "unitId": 2362,
+        "sequenceId": 1178,
+        "sectionId": 846,
+        "blockId": 903,
+        "point": null,
+        "result": null,
+        "isSuccess": false,
+        "overdue": true,
+        "isRequired": false,
+        "isAccessible": true
+      },
+      {
+        "id": 904,
+        "examType": 3,
+        "name": "Bài thi",
+        "totalQuestions": 7,
+        "duration": null,
+        "dateToCompleteBefore": "2024-08-09T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": null,
+        "resultStatus": -1,
+        "unitId": 2363,
+        "sequenceId": 1178,
+        "sectionId": 846,
+        "blockId": 904,
+        "point": null,
+        "result": null,
+        "isSuccess": false,
+        "overdue": true,
+        "isRequired": false,
+        "isAccessible": true
+      },
+      {
+        "id": 910,
+        "examType": 1,
+        "name": "Bài kiểm tra mới trong bài giảng mới của chương mới",
+        "totalQuestions": 4,
+        "duration": null,
+        "dateToCompleteBefore": "2024-10-03T00:00:00Z",
+        "submitDate": null,
+        "submitTime": 0,
+        "allowedSubmitTime": null,
+        "resultStatus": -1,
+        "unitId": 2369,
+        "sequenceId": 1180,
+        "sectionId": 847,
+        "blockId": 910,
+        "point": null,
+        "result": null,
+        "isSuccess": false,
+        "overdue": false,
+        "isRequired": false,
+        "isAccessible": true
+      }
+    ],
+    "totalNumber": 4,
+    "testNumber": 1,
+    "exerciseNumber": 2,
+    "examNumber": 1
+  },
+  "message": "Thực hiện thành công"
+}
+```
+
+# 14. API lịch
+
+> ngày cập nhật : 26/09/2024
+
+> màn hình: UC 921/922/923
+
+```json
+https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=2286-216260&node-type=canvas&t=XUmPfBjxjJDPDWWP-0
+```
+
+> Nội dung thay đổi
+
+* Thêm trường isAccessible để điều hướng
+* Các học liệu nào có thông tin là "Cần hoàn thành trước" => lấy giá trị trả về theo field "dateToCompleteBefore" (không hiện giờ)
+
+> api 
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 2593,
+      "blockId": 1492,
+      "courseId": 322,
+      "courseName": "Thêm mới khóa học",
+      "start": "2024-09-02T00:00:00Z",
+      "end": "2024-09-27T00:00:00Z",
+      "title": "bài kiểm tra",
+      "type": 2,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 1,
+        "totalTime": 0
+      },
+      "sectionId": 378,
+      "sequenceId": 739,
+      "isAccessible": true, // có thể truy cập
+      "dateToCompleteBefore": "2024-09-30T17:46:43Z" // Cần hoàn thành trước
+    }
+  ],
+  "message": "Thực hiện thành công"
 }
 ```
