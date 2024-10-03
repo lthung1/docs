@@ -1054,31 +1054,240 @@ https://www.figma.com/design/lnmbWi8rsyfWVfNGzWRzvS/INNO-(SV)?node-id=2286-21626
 
 * Thêm trường isAccessible để điều hướng
 * Các học liệu nào có thông tin là "Cần hoàn thành trước" => lấy giá trị trả về theo field "dateToCompleteBefore" (không hiện giờ)
+* Lịch học nào của cả ngày thì căn cứ vào field "allDay"
+* Nếu allDay = false, các lịch học mà có thời gian từ a giờ -> b giờ: căn cứ vào các field timeStartInDay và timeEndInDay
 
 > api 
+
+```json
+curl -X 'POST' \
+  'http://localhost:8080/api/course/structure/study/schedule-search' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJnaWFuZyB2aWVuIEZpbmFsIl0sIm5hbWUiOiJWb2hvbmcuMjgxMCIsImlzU3VwZXJVc2VyIjpmYWxzZSwiaWQiOjEwOCwicG9zaXRpb24iOiJpc19zdiIsImVtYWlsIjoiVm9ob25nLjI4MTBAZ21haWwuY29tIiwiZXhwIjoxNzI4MDEwMDk3LCJpYXQiOjE3Mjc5MjM2OTd9.KkBbRCOtv3WOxi8t0r3BNU90Y-P7pl1UA4fP_s4GIWY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "scheduleTypes": [
+    0, 1, 2, 3, 4
+  ],
+  "dateFrom": "2023-10-03T07:54:22.787Z",
+  "dateTo": "2024-10-03T07:54:22.787Z"
+}'
+```
+> response
 
 ```json
 {
   "success": true,
   "data": [
     {
-      "id": 2593,
-      "blockId": 1492,
-      "courseId": 322,
-      "courseName": "Thêm mới khóa học",
-      "start": "2024-09-02T00:00:00Z",
-      "end": "2024-09-27T00:00:00Z",
-      "title": "bài kiểm tra",
+      "id": 1846,
+      "blockId": 575,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-09-26T00:00:00Z",
+      "end": "2024-10-03T23:59:59.999999999Z",
+      "title": "video",
+      "type": 0,
+      "allDay": true, // cả ngày
+      "quizInfo": {
+        "totalQuestions": 0,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 654,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1848,
+      "blockId": 577,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-08-27T00:00:00Z",
+      "end": "2024-09-12T00:00:00Z",
+      "title": "mp4",
+      "type": 0,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 0,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 654,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1849,
+      "blockId": 578,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-09-10T00:00:00Z",
+      "end": "2024-09-30T00:00:00Z",
+      "title": "văn bản ",
+      "type": 0,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 0,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1850,
+      "blockId": 579,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-08-28T00:00:00Z",
+      "end": "2024-09-07T00:00:00Z",
+      "title": "tham khảo nhé",
+      "type": 4,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 0,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1851,
+      "blockId": 580,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-08-28T00:00:00Z",
+      "end": "2024-09-30T00:00:00Z",
+      "title": "tham khảo 1",
+      "type": 4,
+      "allDay": false,
+      "quizInfo": {
+        "totalQuestions": 0,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": "12:30:45", // giờ bắt đầu
+      "timeEndInDay": "19:30:45" // giờ kết thúc
+    },
+    {
+      "id": 1852,
+      "blockId": 581,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-09-28T00:00:00Z",
+      "end": "2024-09-30T00:00:00Z",
+      "title": "bài tập 1",
+      "type": 1,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 2,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1857,
+      "blockId": 586,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-08-28T00:00:00Z",
+      "end": "2024-09-25T00:00:00Z",
+      "title": "bài tập 2",
+      "type": 1,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 2,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1863,
+      "blockId": 592,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-09-25T00:04:00Z",
+      "end": "2024-09-28T00:19:00Z",
+      "title": "bài kiểm tra 1",
       "type": 2,
       "allDay": true,
       "quizInfo": {
-        "totalQuestions": 1,
+        "totalQuestions": 2,
         "totalTime": 0
       },
-      "sectionId": 378,
-      "sequenceId": 739,
-      "isAccessible": true, // có thể truy cập
-      "dateToCompleteBefore": "2024-09-30T17:46:43Z" // Cần hoàn thành trước
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 1864,
+      "blockId": 593,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-09-18T00:11:00Z",
+      "end": "2024-09-20T00:33:00Z",
+      "title": "bài thi 2",
+      "type": 3,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 2,
+        "totalTime": 0
+      },
+      "sectionId": 439,
+      "sequenceId": 655,
+      "isAccessible": true,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
+    },
+    {
+      "id": 2340,
+      "blockId": 1035,
+      "courseId": 344,
+      "courseName": "khóa học 278",
+      "start": "2024-09-22T00:00:00Z",
+      "end": "2024-09-28T00:00:00Z",
+      "title": "Test19/9",
+      "type": 1,
+      "allDay": true,
+      "quizInfo": {
+        "totalQuestions": 2,
+        "totalTime": 0
+      },
+      "sectionId": 441,
+      "sequenceId": 657,
+      "isAccessible": false,
+      "dateToCompleteBefore": "2024-12-27T00:06:00Z",
+      "timeStartInDay": null,
+      "timeEndInDay": null
     }
   ],
   "message": "Thực hiện thành công"
