@@ -13,7 +13,7 @@
 - [12. API tìm kiếm bài tập, bài kiểm tra, bài thi](#12-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
 - [13. API tìm kiếm bài tập, bài kiểm tra, bài thi](#13-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
 - [14. API lịch](#14-API-lịch)
-- [15. API chi màn hình trước khi thi](#15-api-màn-hình-trước-khi-thi)
+- [15. API màn hình trước khi thi](#15-api-màn-hình-trước-khi-thi)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -1295,7 +1295,7 @@ curl -X 'POST' \
 }
 ```
 
-# 15. API chi màn hình trước khi thi
+# 15. API màn hình trước khi thi
 
 > ngày cập nhật: 04/10/2024
 
