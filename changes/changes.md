@@ -13,6 +13,7 @@
 - [12. API tìm kiếm bài tập, bài kiểm tra, bài thi](#12-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
 - [13. API tìm kiếm bài tập, bài kiểm tra, bài thi](#13-api-tìm-kiếm-bài-tập-bài-kiểm-tra-bài-thi)
 - [14. API lịch](#14-API-lịch)
+- [15. API chi màn hình trước khi thi](#15-api-màn-hình-trước-khi-thi)
 
 # 0. Một số chú thích ban đầu
 * Đây là các thay đổi của api
@@ -1290,6 +1291,106 @@ curl -X 'POST' \
       "timeEndInDay": null
     }
   ],
+  "message": "Thực hiện thành công"
+}
+```
+
+# 15. API chi màn hình trước khi thi
+
+> ngày cập nhật: 04/10/2024
+
+> Nội dung thay đổi
+
+* Trả thêm field "isCancelPreSession" => phiên làm bài trước đó có được lưu lại không
+
+> api 
+
+```json
+curl -X 'GET' \
+  'https://be.moooc.xyz/v2/api/course/structure/details/1627' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W10sIm5hbWUiOiJubGg0NjMxNSIsImlzU3VwZXJVc2VyIjpmYWxzZSwiaWQiOjQyNCwicG9zaXRpb24iOiJpc19zdiIsImVtYWlsIjoibmxoNDYzMTVAbm93bmkuY29tIiwiZXhwIjoxNzI4MTE1NTYxLCJpYXQiOjE3MjgwMjkxNjF9.pYKO1SGnffL_rQDZjU7wLDnyH25pZdUqf6Y2POqL__Y'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 1627,
+    "iconType": 2,
+    "module": "quiz",
+    "name": "Bài tập không bắt buộc",
+    "timeCompletedCondition": null,
+    "complete": true,
+    "maxTimeCompleted": null,
+    "isAbleToRetry": true,
+    "isShowResult": true,
+    "remainingTimeToRetry": 2147483647,
+    "examType": 1,
+    "answerSendTime": "2024-10-04T08:20:22Z",
+    "totalTimeTrain": 12,
+    "submitTime": 0,
+    "sessionId": "59467f1f-2152-41c1-b18e-476b267e331b",
+    "pauseSessionId": null,
+    "isLimitTimeToDo": false,
+    "isLimitTrain": true,
+    "timeToComplete": null,
+    "quizConfigDTO": {
+      "blockId": 1627,
+      "generalConfig": {
+        "id": 64,
+        "courseBlockId": 1627,
+        "randomQuiz": null,
+        "sequentiallyQuiz": null,
+        "showQuizScore": null,
+        "showHintQuiz": null,
+        "showFeedback": null,
+        "showResultOfEvaluation": null,
+        "resultOfEvaluationOption": null,
+        "showFeedbackContent": null,
+        "feedbackContentOption": null,
+        "showCorrectAnswer": null,
+        "correctAnswerOption": null,
+        "formatQuiz": null
+      },
+      "actionConfig": {
+        "id": 64,
+        "courseBlockId": 1627,
+        "numberActionEvaluate": null,
+        "timeBetweenExecutions": null,
+        "completionTime": null,
+        "executionTimeExpired": false,
+        "executionTimeExpiredOption": null,
+        "executionTimeExpiredValue": null,
+        "timeForQuiz": null
+      },
+      "evaluateConfig": {
+        "id": 64,
+        "courseBlockId": 1627,
+        "automaticScoring": true,
+        "typeScore": 0,
+        "minimumScore": 0,
+        "scoreFactor": null,
+        "recordResults": null,
+        "showResultsCompletion": true,
+        "showResultsCompletionOption": "[0, 1, 2, 3, 4, 5]",
+        "showResultsCompletionOptions": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    },
+    "waitingTimeForNextExecution": 0,
+    "remainingRetryNumber": 2147483631,
+    "isAutoSubmittedPreSession": null,
+    "isCancelPreSession": true // phiên làm bài trước đó có bị huỷ không
+  },
   "message": "Thực hiện thành công"
 }
 ```
