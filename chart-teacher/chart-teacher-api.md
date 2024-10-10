@@ -1,6 +1,7 @@
 - [0. Một số chú thích ban đầu](#0-một-số-chú-thích-ban-đầu)
-- [0.1 Api lấy khoa của giảng viên](#0-1-api-lấy-khoa-của-giảng-viên)
-- [0.2 Api lấy khóa học ghi danh của giảng viên](#0-2-api-lấy-khóa-học-ghi-danh-của-giảng-viên)
+- [0. Api lấy khoa của giảng viên](#0-api-lấy-khoa-của-giảng-viên)
+- [0. Api lấy khóa học ghi danh của giảng viên](#0-api-lấy-lớp-học-ghi-danh-của-giảng-viên)
+- [0. Api lấy khóa học của giảng viên](#0-api-lấy-khóa-học-của-giảng-viên)
 - [1. Số lượng khóa học theo hình thức xuất bản](#1-Số-lượng-khóa-học-theo-hình-thức-xuất-bản)
 - [2. Số lượng bài giảng theo trạng thái xuất bản](#2-Số-lượng-bài-giảng-theo-trạng-thái-xuất-bản)
 - [3. Số lượng bài giảng theo khoa](#3-Số-lượng-bài-học-theo-khoa)
@@ -97,7 +98,7 @@
     . Tải về: 3
 ```
 
-# 0.1 Api lấy khoa của giảng viên
+# 0. Api lấy khoa của giảng viên
 
 > api
 
@@ -211,7 +212,7 @@ curl -X 'GET' \
 }
 ```
 
-# 0.2 Api lấy khóa học ghi danh của giảng viên
+# 0. Api lấy lớp học ghi danh của giảng viên
 
 > api
 
@@ -302,7 +303,72 @@ curl -X 'GET' \
 }
 ```
 
+# 0. Api lấy khóa học của giảng viên
 
+> api
+
+```json
+curl -X 'POST' \
+  'https://be.moooc.xyz/v2/api/course-student-register/get-course-list' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJMw6NuaCDEkeG6oW8iLCJHacOhbSDEkeG7kWMiLCJLaGFvIHNhdCIsIlFUS0giLCJHaeG6o25nIHZpw6puIiwiVmFpIHRybyIsIlFUSFQiLCJwaGFuIHF1eWVuIGRlZmF1bHQiLCJUZXN0IDEyMzQ1Il0sIm5hbWUiOiJlZHgxMjMiLCJpc1N1cGVyVXNlciI6dHJ1ZSwiaWQiOjQsInBvc2l0aW9uIjoiaXNfZ2lhbmdfdmllbiIsImVtYWlsIjoiZWR4QGV4YW1wbGUuY29tIiwiZXhwIjoxNzI4NjEyNjcyLCJpYXQiOjE3Mjg1MjYyNzJ9.4ennhMv470-AHdsqa0i_lvKOe7bV3FsVuBeaHxszT84' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "page": 1,
+  "size": 1000
+}'
+```
+
+> response
+
+```json
+{
+  "success": true,
+  "data": {
+    "content": [
+      {
+        "id": 1,
+        "name": "Lập trình hướng đối tượng",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+        "image": null,
+        "code": null
+      },
+      {
+        "id": 2,
+        "name": "Lập trình web",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+        "image": null,
+        "code": "NAMVP"
+      },
+      {
+        "id": 3,
+        "name": "Xác suất thống kê",
+        "enterpriseName": "TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN",
+        "image": null,
+        "code": "ABC"
+      }
+    ],
+    "pageable": {
+      "pageNumber": 0,
+      "pageSize": 1000,
+      "sort": [],
+      "offset": 0,
+      "paged": true,
+      "unpaged": false
+    },
+    "totalElements": 331,
+    "totalPages": 1,
+    "last": true,
+    "size": 1000,
+    "number": 0,
+    "sort": [],
+    "numberOfElements": 331,
+    "first": true,
+    "empty": false
+  },
+  "message": "Thực hiện thành công"
+}
+```
 
 # 1. Số lượng khóa học theo hình thức xuất bản
 ```json
